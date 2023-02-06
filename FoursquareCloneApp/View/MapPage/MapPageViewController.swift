@@ -20,6 +20,7 @@ class MapPageViewController: UIViewController,MKMapViewDelegate, CLLocationManag
     var searchController = UISearchController(searchResultsController: nil)
     var searchResults = [MKLocalSearchCompletion]()
     
+    
     @IBAction func searchButton(_ sender: Any) {
         searchController.searchBar.delegate = self
         present(searchController, animated: true, completion: nil)
@@ -180,4 +181,5 @@ extension MapPageViewController {
         navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(title: "Save", style: UIBarButtonItem.Style.done, target: self, action: #selector(addButtonClicked))
     }
 }
+
 
