@@ -19,6 +19,7 @@ class MapPageViewController: UIViewController,MKMapViewDelegate, CLLocationManag
     var searchCompleter = MKLocalSearchCompleter()
     var searchController = UISearchController(searchResultsController: nil)
     var searchResults = [MKLocalSearchCompletion]()
+
     
     
     @IBAction func searchButton(_ sender: Any) {
@@ -47,7 +48,7 @@ class MapPageViewController: UIViewController,MKMapViewDelegate, CLLocationManag
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
-        searchResultsTable.layer.opacity = 0.7
+        searchResultsTable.layer.opacity = 0.7 //opacity
 
     }
     override func viewDidLayoutSubviews() {
