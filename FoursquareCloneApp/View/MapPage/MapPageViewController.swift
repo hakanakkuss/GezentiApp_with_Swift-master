@@ -48,7 +48,7 @@ class MapPageViewController: UIViewController,MKMapViewDelegate, CLLocationManag
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
-        searchResultsTable.layer.opacity = 0.7 //opacity
+        searchResultsTable.layer.opacity = 0.7 
 
     }
     override func viewDidLayoutSubviews() {
