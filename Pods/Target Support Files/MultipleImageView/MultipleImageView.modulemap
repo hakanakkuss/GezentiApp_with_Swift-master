@@ -1,0 +1,6 @@
+framework module MultipleImageView {
+  umbrella header "MultipleImageView-umbrella.h"
+
+  export *
+  module * { export * }
+}

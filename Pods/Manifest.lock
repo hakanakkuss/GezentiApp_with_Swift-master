@@ -1,0 +1,30 @@
+PODS:
+  - Bolts/Tasks (1.9.1)
+  - lottie-ios (3.4.1)
+  - MultipleImageView (0.2.0)
+  - Parse (1.19.4):
+    - Parse/Core (= 1.19.4)
+  - Parse/Core (1.19.4):
+    - Bolts/Tasks (= 1.9.1)
+
+DEPENDENCIES:
+  - lottie-ios
+  - MultipleImageView
+  - Parse
+
+SPEC REPOS:
+  trunk:
+    - Bolts
+    - lottie-ios
+    - MultipleImageView
+    - Parse
+
+SPEC CHECKSUMS:
+  Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
+  lottie-ios: 016449b5d8be0c3dcbcfa0a9988469999cd04c5d
+  MultipleImageView: 4c7277d4da9f21f52ec5dfe7c06d8177b4a92a1b
+  Parse: 6d572042e2c171414c677acabcd9bab7bbf51264
+
+PODFILE CHECKSUM: 0c46d250e3c60c1b50f9d062d151c67eb9706591
+
+COCOAPODS: 1.11.3
