@@ -50,6 +50,7 @@ class PlacesViewController: UIViewController {
                             if let placeId = object.objectId {
                                 self.placeNameArray.insert(placeName, at: 0)
                                 self.placeIdArray.insert(placeId, at: 0)
+                                
                             }
                             self.tableView.reloadData()
                         }
@@ -67,6 +68,7 @@ class PlacesViewController: UIViewController {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.selectedPlaceId = placeIdArray[indexPath.row]
+        
         performSegue(withIdentifier: "toDetailsVC", sender: nil)
     }
     
@@ -110,6 +112,16 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource {
         if editingStyle == .delete {
             self.placeNameArray.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
+
+            let query = PFQuery(className: "Places")
+            query.whereKey("objectId", equalTo: placeIdArray[indexPath.row])
+            query.findObjectsInBackground { placeNameArray, error in
+                ((objects: [AnyObject]?, error: NSError?) -> Void).self
+                      for object in placeNameArray! {
+                          object.deleteEventually()
+                      }
+                    print("silindi")
             }
         }
     }
+}
