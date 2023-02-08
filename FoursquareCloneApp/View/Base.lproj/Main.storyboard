@@ -563,7 +563,7 @@
                                 <rect key="frame" x="0.0" y="297" width="414" height="565"/>
                             </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rc1-y5-aEf">
-                                <rect key="frame" x="0.0" y="94" width="414" height="200"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="254"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -575,7 +575,7 @@
                             <constraint firstItem="7YJ-q0-PFw" firstAttribute="top" secondItem="kJE-eM-Ffx" secondAttribute="top" constant="205" id="EPV-LU-qvk"/>
                             <constraint firstItem="kJE-eM-Ffx" firstAttribute="bottom" secondItem="7YJ-q0-PFw" secondAttribute="bottom" id="JCz-Dl-GAf"/>
                             <constraint firstItem="rc1-y5-aEf" firstAttribute="trailing" secondItem="7YJ-q0-PFw" secondAttribute="trailing" id="S5b-eC-plj"/>
-                            <constraint firstItem="7YJ-q0-PFw" firstAttribute="top" secondItem="rc1-y5-aEf" secondAttribute="bottom" constant="3" id="qoO-GI-OQR"/>
+                            <constraint firstItem="7YJ-q0-PFw" firstAttribute="top" secondItem="rc1-y5-aEf" secondAttribute="bottom" constant="-51" id="qoO-GI-OQR"/>
                             <constraint firstItem="rc1-y5-aEf" firstAttribute="leading" secondItem="7YJ-q0-PFw" secondAttribute="leading" id="rtC-uY-yjv"/>
                             <constraint firstItem="rc1-y5-aEf" firstAttribute="top" secondItem="kJE-eM-Ffx" secondAttribute="top" constant="2" id="tQz-zc-wT3"/>
                         </constraints>
@@ -584,7 +584,7 @@
                         <color key="badgeColor" red="0.2901960784" green="0.14901960780000001" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" id="4Xs-Ne-gQi">
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="GXe-nk-FhA">
+                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="GXe-nk-FhA">
                             <color key="tintColor" red="0.29019607843137252" green="0.14901960784313725" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="searchButton:" destination="zjy-mX-KXW" id="tKu-3o-gQe"/>
