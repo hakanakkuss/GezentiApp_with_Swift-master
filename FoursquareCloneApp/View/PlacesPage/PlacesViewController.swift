@@ -28,17 +28,19 @@ class PlacesViewController: UIViewController {
 
     }
     
+     
+    
     func navigationControl(){
         navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addButtonClicked))
         
-        navigationController?.navigationBar.topItem?.leftBarButtonItem = UIBarButtonItem(title: "Log Out", style: UIBarButtonItem.Style.plain, target: self, action: #selector(logOutButtonClicked))
+        navigationController?.navigationBar.topItem?.leftBarButtonItem = UIBarButtonItem(title: "Çıkış Yap", style: UIBarButtonItem.Style.plain, target: self, action: #selector(logOutButtonClicked))
     }
     
     func getDataFromParse(){
         let query = PFQuery(className: "Places") //PFQuery methoduyla "Places" isimli sınıfa ait verileri çekiyoruz.
         query.findObjectsInBackground { (objects, error) in
             if error != nil {
-                self.makeAlert(titleInput: "Error", messageInput: error?.localizedDescription ?? "error")
+                self.makeAlert(titleInput: "Hata", messageInput: error?.localizedDescription ?? "error")
             }else {
                 if objects != nil {
                     self.placeNameArray.removeAll(keepingCapacity: false)
@@ -80,7 +82,7 @@ class PlacesViewController: UIViewController {
         
         PFUser.logOutInBackground { error in
             if error != nil {
-                self.makeAlert(titleInput: "Error", messageInput: error?.localizedDescription ?? "error")
+                self.makeAlert(titleInput: "Hata", messageInput: error?.localizedDescription ?? "error")
             }else {
                 self.performSegue(withIdentifier: "goToHomePage", sender: nil)
             }

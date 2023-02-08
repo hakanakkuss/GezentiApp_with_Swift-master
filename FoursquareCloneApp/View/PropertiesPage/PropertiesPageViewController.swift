@@ -11,8 +11,7 @@ import Lottie
 
 class PropertiesPageViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate,PHPickerViewControllerDelegate {
 
-
-    
+    @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var placeNameTF: UITextField!
     @IBOutlet weak var placeTypeTF: UITextField!
     @IBOutlet weak var placeDescriptionTF: UITextField!
@@ -36,12 +35,13 @@ class PropertiesPageViewController: UIViewController, UIImagePickerControllerDel
         LottieAnimationView?.sizeToFit()
         view.addSubview(LottieAnimationView!)
         LottieAnimationView!.play()
-        
+        nextButton.titleLabel?.textColor = UIColor.brownCoffee
+        let backItem = UIBarButtonItem()
+           backItem.title = "Geri"
+           navigationItem.backBarButtonItem = backItem
       
 
     }
-    
-    
     
     func chooseImageMethod(){
         imageView.isUserInteractionEnabled = true
@@ -101,6 +101,8 @@ class PropertiesPageViewController: UIViewController, UIImagePickerControllerDel
     
     @IBAction func nextButton(_ sender: Any) {
         let placeModel = PlaceSingletonModel.sharedInstance
+        nextButton.titleLabel?.font = UIFont.avenir(.Medium, size: 27)
+        nextButton.titleLabel?.textColor = UIColor.brownCoffee
         
         if placeNameTF.text != "" && placeTypeTF.text != "" && placeDescriptionTF.text != "" {
             if let chosenImage = imageView.image  {
@@ -111,7 +113,7 @@ class PropertiesPageViewController: UIViewController, UIImagePickerControllerDel
                     placeModel.placeImage = chosenImage
             }
         }else {
-           makeAlert(titleInput: "Error!", messageInput: "Tüm alanları doldurduğunuzdan emin olun.")
+           makeAlert(titleInput: "Uyarı!", messageInput: "Tüm alanları doldurduğunuzdan emin olun.")
         }
         performSegue(withIdentifier: "goToDatePage", sender: nil)
     }

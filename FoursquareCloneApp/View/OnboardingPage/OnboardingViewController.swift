@@ -33,9 +33,9 @@ class OnboardingViewController: UIViewController {
         
         
         sliderArray = [
-            OnboardingSlider(title: "Gezi", description: "Gittiğin yerlerin adreslerini kolaylıkla kaydedebilirsin.", sliderImage: UIImage(named: "travel1")!),
-            OnboardingSlider(title: "Date", description: "Sevgilinle romantik bir akşam yemeği için gittiğin yerleri kontrol edebilirsin.", sliderImage: UIImage(named: "date")!),
-            OnboardingSlider(title: "Bussines", description: "İş görüşmesine gittiğin yeri unuttun mu? Sorun değil. Foursquare sana hatırlatacak.", sliderImage: UIImage(named: "bussiness")!)
+            OnboardingSlider(title: "Gezintiye Çık", description: "Gittiğin yerlerin adreslerini kolaylıkla kaydedebilirsin.", sliderImage: UIImage(named: "travel1")!),
+            OnboardingSlider(title: "Buluşma Ayarla", description: "Sevgilinle romantik bir akşam yemeği için gittiğin yerleri kontrol edebilirsin.", sliderImage: UIImage(named: "date")!),
+            OnboardingSlider(title: "Kafanı Dağıt", description: "Sebepsizce bazen kaçıp gitmeden önce ziyaret ettiğin yerlere göz atabilirsin.", sliderImage: UIImage(named: "bussiness")!)
                       ]
        
         nextButton.isHidden = false
