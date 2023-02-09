@@ -178,6 +178,7 @@ extension MapPageViewController {
     
     func saveButtn (){
         navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(title: "Save", style: UIBarButtonItem.Style.done, target: self, action: #selector(addButtonClicked))
+        self.navigationController!.navigationBar.tintColor = UIColor.brownCoffee
     }
 }
 

@@ -33,7 +33,9 @@ class PlacesViewController: UIViewController {
     func navigationControl(){
         navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addButtonClicked))
         
+        
         navigationController?.navigationBar.topItem?.leftBarButtonItem = UIBarButtonItem(title: "Çıkış Yap", style: UIBarButtonItem.Style.plain, target: self, action: #selector(logOutButtonClicked))
+        self.navigationController!.navigationBar.tintColor = UIColor.almond
     }
     
     func getDataFromParse(){

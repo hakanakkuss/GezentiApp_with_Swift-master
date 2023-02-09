@@ -36,9 +36,8 @@ class PropertiesPageViewController: UIViewController, UIImagePickerControllerDel
         view.addSubview(LottieAnimationView!)
         LottieAnimationView!.play()
         nextButton.titleLabel?.textColor = UIColor.brownCoffee
-        let backItem = UIBarButtonItem()
-           backItem.title = "Geri"
-           navigationItem.backBarButtonItem = backItem
+        choosePhotos.tintColor = UIColor.almond
+  
       
 
     }
