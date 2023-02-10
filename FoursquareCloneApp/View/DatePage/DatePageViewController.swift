@@ -27,6 +27,11 @@ class DatePageViewController: UIViewController {
         view.addSubview(LottieAnimationView!)
         LottieAnimationView!.play()
         
+        let dateLabel = UserDefaults.standard.object(forKey: "date")
+        
+        if let newDate = dateLabel as? String {
+            datePageLabel.text = newDate
+        }
         
 
         
@@ -42,8 +47,8 @@ class DatePageViewController: UIViewController {
     @IBAction func saveAndForwardBtn(_ sender: Any) {
         let placeModel = PlaceSingletonModel.sharedInstance
         placeModel.placeDate = datePageLabel.text!
-//        let date = datePageLabel.text
-//        UserDefaults.standard.set(date, forKey: "savedLocation")
+       
+        UserDefaults.standard.set(datePageLabel.text!, forKey: "date")
         performSegue(withIdentifier: "goToMapPage", sender: nil)
         
     }

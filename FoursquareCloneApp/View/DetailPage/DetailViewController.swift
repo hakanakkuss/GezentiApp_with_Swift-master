@@ -25,7 +25,6 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
     var choosenPlaceId = ""
     var choosenPlaceLatitude = Double()
     var choosenPlaceLongitude = Double()
-    
 
    
     override func viewDidLoad() {
@@ -143,10 +142,6 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
             }
         }
     }
-    
-   
 
-    @IBAction func nextButton(_ sender: UIButton) {
-    }
     
 }

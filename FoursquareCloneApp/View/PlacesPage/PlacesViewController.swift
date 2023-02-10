@@ -25,6 +25,8 @@ class PlacesViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        
 
     }
     

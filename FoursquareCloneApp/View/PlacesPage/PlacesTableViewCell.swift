@@ -9,9 +9,11 @@ import UIKit
 
 class PlacesTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var favoriteButton: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -19,5 +21,15 @@ class PlacesTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    @IBAction func favoriteButtonClicked(_ sender: Any) {
+        if favoriteButton.tag == 0 {
+            favoriteButton.tintColor = UIColor.brownCoffee
+            favoriteButton.tag += 1
 
+        }else {
+            favoriteButton.tintColor = UIColor.almond
+            favoriteButton.tag -= 1
+        }
+    }
+    
 }
