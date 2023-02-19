@@ -32,9 +32,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
 
         getDataFromParse()
         mapView.delegate = self
-        
-        choosenPlaceLatitude = MapSingletonModel.sharedInstance.mapLatitude
-        choosenPlaceLongitude = MapSingletonModel.sharedInstance.mapLongitude
+
         
         imageView.layer.cornerRadius = 19
     }

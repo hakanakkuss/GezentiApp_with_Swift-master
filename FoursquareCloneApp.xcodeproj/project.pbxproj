@@ -17,7 +17,6 @@
 		52154213298128450076CCDF /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52154212298128450076CCDF /* UIColor+Ext.swift */; };
 		52154215298129290076CCDF /* UIFont+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52154214298129280076CCDF /* UIFont+Ext.swift */; };
 		524717FF297B2077003AD66D /* PlaceSingletonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524717FE297B2077003AD66D /* PlaceSingletonModel.swift */; };
-		5258DA0A298429160096E3F1 /* MapSingletonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5258DA09298429160096E3F1 /* MapSingletonModel.swift */; };
 		5277A635298316C00077C591 /* 5559-travel-app-onboarding-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 5277A634298316C00077C591 /* 5559-travel-app-onboarding-animation.json */; };
 		5287EBAC2970208D00A83FF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5287EBAB2970208D00A83FF0 /* AppDelegate.swift */; };
 		5287EBAE2970208D00A83FF0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5287EBAD2970208D00A83FF0 /* SceneDelegate.swift */; };
@@ -45,7 +44,6 @@
 		52154212298128450076CCDF /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		52154214298129280076CCDF /* UIFont+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Ext.swift"; sourceTree = "<group>"; };
 		524717FE297B2077003AD66D /* PlaceSingletonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSingletonModel.swift; sourceTree = "<group>"; };
-		5258DA09298429160096E3F1 /* MapSingletonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSingletonModel.swift; sourceTree = "<group>"; };
 		5277A634298316C00077C591 /* 5559-travel-app-onboarding-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "5559-travel-app-onboarding-animation.json"; sourceTree = "<group>"; };
 		5287EBA82970208D00A83FF0 /* FoursquareCloneApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoursquareCloneApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5287EBAB2970208D00A83FF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -94,13 +92,13 @@
 			path = OnboardingPage;
 			sourceTree = "<group>";
 		};
-		5201DBDA298FBE3700AA6376 /* New Group */ = {
+		5201DBDA298FBE3700AA6376 /* Animations */ = {
 			isa = PBXGroup;
 			children = (
 				5277A634298316C00077C591 /* 5559-travel-app-onboarding-animation.json */,
 				5201DBDB298FBEEE00AA6376 /* 66346-marking-a-calendar.json */,
 			);
-			path = "New Group";
+			path = Animations;
 			sourceTree = "<group>";
 		};
 		5201DBDD298FDE3B00AA6376 /* SettingsPage */ = {
@@ -114,6 +112,8 @@
 		5215420F2981246F0076CCDF /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				5201DBDA298FBE3700AA6376 /* Animations */,
+				5287EBB42970209100A83FF0 /* Assets.xcassets */,
 				52154210298124890076CCDF /* UIViewController+Helpers.swift */,
 				52154214298129280076CCDF /* UIFont+Ext.swift */,
 				52154212298128450076CCDF /* UIColor+Ext.swift */,
@@ -127,6 +127,29 @@
 				524717FE297B2077003AD66D /* PlaceSingletonModel.swift */,
 			);
 			path = PlaceSingletonModel;
+			sourceTree = "<group>";
+		};
+		5282A6F629A2496B003E0E08 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5201DBD9298EF40800AA6376 /* OnboardingPage */,
+				52F041A2297725200026456E /* RegisterPage */,
+				52F0419E297724C70026456E /* PlacesPage */,
+				52F0419F297724D40026456E /* PropertiesPage */,
+				5201DBD6298EDBFC00AA6376 /* DatePage */,
+				52F041A0297724FE0026456E /* MapPage */,
+				52F041A12977250F0026456E /* DetailPage */,
+				5201DBDD298FDE3B00AA6376 /* SettingsPage */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		5282A6F729A2498D003E0E08 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				524717FD297B205F003AD66D /* PlaceSingletonModel */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		5287EB9F2970208D00A83FF0 = {
@@ -150,10 +173,10 @@
 		5287EBAA2970208D00A83FF0 /* FoursquareCloneApp */ = {
 			isa = PBXGroup;
 			children = (
+				5282A6F729A2498D003E0E08 /* Models */,
+				5282A6F629A2496B003E0E08 /* Controllers */,
 				52F0419D297724340026456E /* View */,
 				5215420F2981246F0076CCDF /* Helpers */,
-				5287EBB42970209100A83FF0 /* Assets.xcassets */,
-				5201DBDA298FBE3700AA6376 /* New Group */,
 				5287EBB92970209100A83FF0 /* Info.plist */,
 			);
 			path = FoursquareCloneApp;
@@ -166,15 +189,6 @@
 				5287EBB12970208D00A83FF0 /* Main.storyboard */,
 				5287EBAB2970208D00A83FF0 /* AppDelegate.swift */,
 				5287EBAD2970208D00A83FF0 /* SceneDelegate.swift */,
-				524717FD297B205F003AD66D /* PlaceSingletonModel */,
-				5201DBD9298EF40800AA6376 /* OnboardingPage */,
-				52F041A2297725200026456E /* RegisterPage */,
-				52F0419E297724C70026456E /* PlacesPage */,
-				52F0419F297724D40026456E /* PropertiesPage */,
-				5201DBD6298EDBFC00AA6376 /* DatePage */,
-				52F041A0297724FE0026456E /* MapPage */,
-				52F041A12977250F0026456E /* DetailPage */,
-				5201DBDD298FDE3B00AA6376 /* SettingsPage */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -200,7 +214,6 @@
 			isa = PBXGroup;
 			children = (
 				52F04197297718A70026456E /* MapPageViewController.swift */,
-				5258DA09298429160096E3F1 /* MapSingletonModel.swift */,
 			);
 			path = MapPage;
 			sourceTree = "<group>";
@@ -355,7 +368,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5258DA0A298429160096E3F1 /* MapSingletonModel.swift in Sources */,
 				52154215298129290076CCDF /* UIFont+Ext.swift in Sources */,
 				5201DBD0298E8ABB00AA6376 /* OnboardingCollectionViewCell.swift in Sources */,
 				52154211298124890076CCDF /* UIViewController+Helpers.swift in Sources */,
