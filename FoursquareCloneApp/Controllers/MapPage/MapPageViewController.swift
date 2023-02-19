@@ -161,8 +161,7 @@ extension MapPageViewController {
                 let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
                 let region = MKCoordinateRegion(center: coordinate, span: span)
                 self.mapView.setRegion(region, animated: true)
-    
-                ///Parse' a enlem boylam kaydetme
+                   
                 PlaceSingletonModel.sharedInstance.placeLatitude = String(latitude!)
                 PlaceSingletonModel.sharedInstance.placeLongitude = String(longitude!)
 
