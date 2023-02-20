@@ -27,6 +27,8 @@ class PlacesViewController: UIViewController {
         tableView.dataSource = self
         
         
+        
+        
 
     }
     
@@ -74,6 +76,7 @@ class PlacesViewController: UIViewController {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.selectedPlaceId = placeIdArray[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
         
         performSegue(withIdentifier: "toDetailsVC", sender: nil)
     }
@@ -107,6 +110,8 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .default
         cell.textLabel?.font = UIFont.avenir(.Heavy, size: 18)
         cell.textLabel?.textColor = UIColor.brownCoffee
+        cell.delegate = self
+        
         return cell
     }
   
@@ -130,4 +135,13 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
+}
+
+extension PlacesViewController: PlacesTableViewCellProtocol {
+    func didTapFavoriteButton() {
+        print("helo")
+        performSegue(withIdentifier: "goToFavoritesPage", sender: nil)
+    }
+    
+    
 }

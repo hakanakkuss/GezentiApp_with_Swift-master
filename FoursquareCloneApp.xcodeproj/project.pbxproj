@@ -24,6 +24,7 @@
 		5287EBB32970208D00A83FF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5287EBB12970208D00A83FF0 /* Main.storyboard */; };
 		5287EBB52970209100A83FF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5287EBB42970209100A83FF0 /* Assets.xcassets */; };
 		5287EBB82970209100A83FF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5287EBB62970209100A83FF0 /* LaunchScreen.storyboard */; };
+		52C245A829A2A68F006F15C5 /* FavoritesPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C245A729A2A68F006F15C5 /* FavoritesPageViewController.swift */; };
 		52F041942977047C0026456E /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F041932977047C0026456E /* PlacesViewController.swift */; };
 		52F04196297717100026456E /* PropertiesPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F041952977170F0026456E /* PropertiesPageViewController.swift */; };
 		52F04198297718A70026456E /* MapPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F04197297718A70026456E /* MapPageViewController.swift */; };
@@ -53,6 +54,7 @@
 		5287EBB42970209100A83FF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5287EBB72970209100A83FF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5287EBB92970209100A83FF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52C245A729A2A68F006F15C5 /* FavoritesPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesPageViewController.swift; sourceTree = "<group>"; };
 		52F041932977047C0026456E /* PlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
 		52F041952977170F0026456E /* PropertiesPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesPageViewController.swift; sourceTree = "<group>"; };
 		52F04197297718A70026456E /* MapPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPageViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				5201DBD6298EDBFC00AA6376 /* DatePage */,
 				52F041A0297724FE0026456E /* MapPage */,
 				52F041A12977250F0026456E /* DetailPage */,
+				5282A6F829A24F98003E0E08 /* FavoritesPage */,
 				5201DBDD298FDE3B00AA6376 /* SettingsPage */,
 			);
 			path = Controllers;
@@ -150,6 +153,14 @@
 				524717FD297B205F003AD66D /* PlaceSingletonModel */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		5282A6F829A24F98003E0E08 /* FavoritesPage */ = {
+			isa = PBXGroup;
+			children = (
+				52C245A729A2A68F006F15C5 /* FavoritesPageViewController.swift */,
+			);
+			path = FavoritesPage;
 			sourceTree = "<group>";
 		};
 		5287EB9F2970208D00A83FF0 = {
@@ -377,6 +388,7 @@
 				5201DBD2298E8B5F00AA6376 /* OnboardingSlider.swift in Sources */,
 				52154213298128450076CCDF /* UIColor+Ext.swift in Sources */,
 				5287EBAC2970208D00A83FF0 /* AppDelegate.swift in Sources */,
+				52C245A829A2A68F006F15C5 /* FavoritesPageViewController.swift in Sources */,
 				5287EBAE2970208D00A83FF0 /* SceneDelegate.swift in Sources */,
 				52F04196297717100026456E /* PropertiesPageViewController.swift in Sources */,
 				52F0419A297719920026456E /* DetailViewController.swift in Sources */,

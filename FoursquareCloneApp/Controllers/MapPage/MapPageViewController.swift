@@ -182,4 +182,11 @@ extension MapPageViewController {
     }
 }
 
+extension MapPageViewController: UISearchControllerDelegate {
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        self.searchController.isActive = false
+        return true
+    }
+}
+
 
