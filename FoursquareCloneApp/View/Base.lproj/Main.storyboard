@@ -34,7 +34,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2CO-cO-vFN">
-                                <rect key="frame" x="0.0" y="149" width="425.5" height="316"/>
+                                <rect key="frame" x="0.0" y="149" width="417.5" height="316"/>
                                 <color key="backgroundColor" red="0.91764705879999997" green="0.86666666670000003" blue="0.80392156859999997" alpha="0.91996330609999999" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="316" id="Wme-KY-rCS"/>
@@ -47,7 +47,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionCell" id="mBi-OX-nsX" customClass="OnboardingCollectionViewCell" customModule="FoursquareCloneApp" customModuleProvider="target">
-                                        <rect key="frame" x="42" y="0.0" width="342" height="308"/>
+                                        <rect key="frame" x="38" y="0.0" width="342" height="308"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="DUk-yn-q1C">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="308"/>
@@ -298,7 +298,7 @@
                                                     <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
                                                     <connections>
                                                         <action selector="favoriteButtonClicked:" destination="POR-DO-rT1" eventType="touchUpInside" id="Okf-8R-s7V"/>
-                                                        <segue destination="UNC-A0-CiG" kind="show" identifier="goToFavoritesPage" id="Ka1-Ci-buS"/>
+                                                        <segue destination="UNC-A0-CiG" kind="show" identifier="goToFavoritesPage" id="Oeb-nc-htT"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -630,15 +630,6 @@
                     <view key="view" contentMode="scaleToFill" id="KUb-O6-XcD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FavoritesPage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gFG-El-VqW">
-                                <rect key="frame" x="125" y="221" width="165" height="123"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="yRR-nc-92n"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
@@ -646,7 +637,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2JW-ws-tFL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1780" y="799"/>
+            <point key="canvasLocation" x="1779.7101449275365" y="798.88392857142856"/>
         </scene>
         <!--Map Page View Controller-->
         <scene sceneID="rx5-56-Req">
@@ -892,7 +883,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="gev-5H-jkb"/>
-        <segue reference="r6Y-sr-E1I"/>
+        <segue reference="GUg-DS-Qfd"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="icons8-gear-75" width="25" height="25"/>
