@@ -34,7 +34,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2CO-cO-vFN">
-                                <rect key="frame" x="0.0" y="149" width="417.5" height="316"/>
+                                <rect key="frame" x="0.0" y="149" width="425.5" height="316"/>
                                 <color key="backgroundColor" red="0.91764705879999997" green="0.86666666670000003" blue="0.80392156859999997" alpha="0.91996330609999999" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="316" id="Wme-KY-rCS"/>
@@ -47,7 +47,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionCell" id="mBi-OX-nsX" customClass="OnboardingCollectionViewCell" customModule="FoursquareCloneApp" customModuleProvider="target">
-                                        <rect key="frame" x="38" y="0.0" width="342" height="308"/>
+                                        <rect key="frame" x="42" y="0.0" width="342" height="308"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="DUk-yn-q1C">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="308"/>
@@ -157,7 +157,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gezenti" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EzN-eO-tIO">
-                                <rect key="frame" x="60" y="146.5" width="260" height="49.5"/>
+                                <rect key="frame" x="60" y="146.5" width="294" height="49.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="36"/>
                                 <color key="textColor" systemColor="systemGray3Color"/>
                                 <nil key="highlightedColor"/>
@@ -182,10 +182,10 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="fEO-sc-Xhy">
-                                <rect key="frame" x="70" y="350" width="240" height="39"/>
+                                <rect key="frame" x="70" y="350" width="274" height="39"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QKZ-RW-p2s">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="39"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="134" height="39"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="7vd-F0-p3J"/>
                                             <constraint firstAttribute="height" constant="39" id="Ct6-bL-G0j"/>
@@ -213,7 +213,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M54-Ib-jNL">
-                                        <rect key="frame" x="150" y="0.0" width="90" height="39"/>
+                                        <rect key="frame" x="184" y="0.0" width="90" height="39"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="39" id="GF3-Ts-aFE"/>
                                             <constraint firstAttribute="width" constant="90" id="zVf-Zs-dR1"/>
@@ -626,14 +626,39 @@
         <!--Favorites Page View Controller-->
         <scene sceneID="vtB-Gi-GZC">
             <objects>
-                <viewController id="UNC-A0-CiG" customClass="FavoritesPageViewController" customModule="FoursquareCloneApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Favorites" id="UNC-A0-CiG" customClass="FavoritesPageViewController" customModule="FoursquareCloneApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KUb-O6-XcD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ha5-WK-WDc">
+                                <rect key="frame" x="0.0" y="92" width="414" height="770"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="PtT-aD-Bqk">
+                                        <rect key="frame" x="0.0" y="50" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PtT-aD-Bqk" id="ayA-qU-Wcs">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="yRR-nc-92n"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="yRR-nc-92n" firstAttribute="trailing" secondItem="ha5-WK-WDc" secondAttribute="trailing" id="sRc-p3-CXu"/>
+                            <constraint firstItem="yRR-nc-92n" firstAttribute="bottom" secondItem="ha5-WK-WDc" secondAttribute="bottom" id="tjJ-8l-X4N"/>
+                            <constraint firstItem="ha5-WK-WDc" firstAttribute="leading" secondItem="yRR-nc-92n" secondAttribute="leading" id="weE-Ae-Day"/>
+                            <constraint firstItem="ha5-WK-WDc" firstAttribute="top" secondItem="yRR-nc-92n" secondAttribute="top" id="xvv-iG-Kt0"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="AHX-09-jQS"/>
+                    <connections>
+                        <outlet property="favoritesTableView" destination="ha5-WK-WDc" id="Ovh-CC-upJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2JW-ws-tFL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
