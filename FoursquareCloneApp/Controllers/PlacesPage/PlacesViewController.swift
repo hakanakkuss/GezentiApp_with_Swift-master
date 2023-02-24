@@ -8,10 +8,13 @@
 import UIKit
 import Parse
 import CoreData
+import Lottie
 
 class PlacesViewController: UIViewController {
-   
-
+    
+    let animationView = AnimationView(name: "5559-travel-app-onboarding-animation")
+    let messageLabel = UILabel()
+    
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -28,7 +31,38 @@ class PlacesViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-
+        
+        // Configure animation view
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .loop
+        animationView.play()
+        
+        // Configure message label
+        messageLabel.text = "Henüz ziyaret edilen yer bilgisi mevcut değil."
+        messageLabel.textAlignment = .center
+        messageLabel.textColor = .darkGray
+        messageLabel.font = UIFont.systemFont(ofSize: 19)
+        
+        // Add animation view and message label to the view controller's view
+        view.addSubview(animationView)
+        view.addSubview(messageLabel)
+        
+        // Layout animation view and message label
+        animationView.translatesAutoresizingMaskIntoConstraints = false
+        messageLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            animationView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            animationView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -50),
+            animationView.widthAnchor.constraint(equalToConstant: 200),
+            animationView.heightAnchor.constraint(equalToConstant: 200),
+            
+            messageLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            messageLabel.topAnchor.constraint(equalTo: animationView.bottomAnchor, constant: 20),
+            messageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            messageLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+        ])
+        
     }
     
     // MARK: -NAVIGATION CONTROLLER
@@ -50,14 +84,14 @@ class PlacesViewController: UIViewController {
                 if objects != nil {
                     self.placeNameArray.removeAll(keepingCapacity: false)
                     self.placeIdArray.removeAll(keepingCapacity: false)
-                   
+                    
                     for object in objects! { //Gelen veriler içerisinde for döngüsü yapıp verileri gerekli yerlere basıyoruz.
                         if let placeName = object.object(forKey: "PlaceName") as? String {
                             
                             if let placeId = object.objectId {
                                 self.placeNameArray.insert(placeName, at: 0)
                                 self.placeIdArray.insert(placeId, at: 0)
-                                                                
+                                
                             }
                             self.tableView.reloadData()
                         }
@@ -82,7 +116,7 @@ class PlacesViewController: UIViewController {
         
     }
     
-  // MARK: -BUTTONS
+    // MARK: -BUTTON ACTIONS
     @objc func addButtonClicked(){
         performSegue(withIdentifier: "goToPropertiesPage", sender: nil)
         
@@ -107,17 +141,21 @@ class PlacesViewController: UIViewController {
 
 extension PlacesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if placeNameArray.count == 0 {
+            animationView.isHidden = false
+            messageLabel.isHidden = false
+        } else {
+            animationView.isHidden = true
+            messageLabel.isHidden = true
+        }
+        
         return placeNameArray.count
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.selectedPlaceId = placeIdArray[indexPath.row]
-        tableView.deselectRow(at: indexPath, animated: true)
-        performSegue(withIdentifier: "toDetailsVC", sender: nil)
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PlacesTableViewCell
         cell.textLabel?.text = placeNameArray[indexPath.row]
         cell.selectionStyle = .default
@@ -127,7 +165,14 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
-  
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedPlaceId = placeIdArray[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "toDetailsVC", sender: nil)
+        
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100.0
     }
@@ -136,14 +181,18 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource {
         if editingStyle == .delete {
             self.placeNameArray.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
-
+            
+            //KAYIT SİLİNDİĞİNDE FAVORİLERDEN DE SİLİNMELİ
+            //Burda deleteItems fonksiyonu çağırılmalı.
+            
+            
             let query = PFQuery(className: "Places")
             query.whereKey("objectId", equalTo: placeIdArray[indexPath.row])
             query.findObjectsInBackground { placeNameArray, error in
                 ((objects: [AnyObject]?, error: NSError?) -> Void).self
-                      for object in placeNameArray! {
-                          object.deleteEventually()
-                      }
+                for object in placeNameArray! {
+                    object.deleteEventually()
+                }
             }
         }
         
@@ -155,12 +204,12 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
-
+        
         ///Veri tabanı bağlantısı
         let managedContext = appDelegate.persistentContainer.viewContext //CoreData işlemi yapacağımızı belirttik.
         let entity = NSEntityDescription.entity(forEntityName: "Places", in: managedContext)! //Entity'i çağırdık.
         let item = NSManagedObject(entity: entity, insertInto: managedContext) // Model'i çağırdık.
-
+        
         item.setValue(word, forKey: "item") //Veritabanına veri kaydetme.
         if !placesArray.contains(word){
             placesArray.append(word)
@@ -171,25 +220,25 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource {
         
         do{
             try managedContext.save() //Veritabanına veri kaydetme.
-
+            
         }catch {
             print(error.localizedDescription)
         }
     }
     
-//      MARK: -FETCH DATAS FROM COREDATA
+    //      MARK: -FETCH DATAS FROM COREDATA
     func fetchItems(){
         self.placesArray.removeAll() //Varolan array'in içini silip core dataya ulaşıcaz.
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
-
+        
         let managedContext = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Places") //Veritabanına istek attık.
-
+        
         do{
             let fetchResult = try managedContext.fetch(fetchRequest)
-
+            
             for item in fetchResult as! [NSManagedObject]{
                 if !placesArray.contains("MyHome"){
                     self.placesArray.append(item.value(forKey: "item") as! String)
@@ -198,43 +247,44 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource {
                     self.placesArray.append(item.value(forKey: "item") as! String)
                 }
             }
-
+            
         }catch {
             print(error.localizedDescription)
         }
     }
     
     
-//    // MARK: -DELETE DATA FROM COREDATA
+    //    // MARK: -DELETE DATA FROM COREDATA
     func deleteItems(word: String){
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.persistentContainer.viewContext
-
+        
         // Silmek istediğiniz verilerin bulunduğu sorguyu hazırlayın
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Places")
         fetchRequest.predicate = NSPredicate(format: "item = %@", word)
-
+        
         do {
             let result = try managedContext.fetch(fetchRequest)
             for data in result as! [NSManagedObject] {
                 managedContext.delete(data)
             }
-
+            
             // Değişiklikleri kaydedin
             try managedContext.save()
-
+            
         } catch let error as NSError {
             print("Core Data'dan veri silme hatası: \(error), \(error.userInfo)")
         }
     }
-
+    
 }
 
 
 extension PlacesViewController: PlacesTableViewCellProtocol {
-
+    
     func didTapFavoriteButton(word: String) {
         createItemsCoreData(word: word)
+        //        deleteItems(word: word)
         fetchItems()
     }
 }

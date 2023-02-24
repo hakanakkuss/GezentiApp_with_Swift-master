@@ -10,7 +10,7 @@ import MapKit
 import Parse
 
 class MapPageViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate, MKLocalSearchCompleterDelegate, UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchResultsTable: UITableView!
     var locationManager = CLLocationManager()
@@ -19,18 +19,18 @@ class MapPageViewController: UIViewController,MKMapViewDelegate, CLLocationManag
     var searchCompleter = MKLocalSearchCompleter()
     var searchController = UISearchController(searchResultsController: nil)
     var searchResults = [MKLocalSearchCompletion]()
-
+    
     @IBAction func searchButton(_ sender: Any) {
         searchController.searchBar.delegate = self
         present(searchController, animated: true, completion: nil)
-        }
+    }
     
     @IBOutlet weak var mapView: MKMapView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         mapView.delegate = self
         locationManager.delegate = self
         
@@ -45,9 +45,9 @@ class MapPageViewController: UIViewController,MKMapViewDelegate, CLLocationManag
         
         searchResultsTable.layer.opacity = 0.7
         searchResultsTable.isHidden = true
-
+        
     }
-  
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         mapView.frame = CGRect(x: 0, y: view.safeAreaInsets.top, width: view.frame.size.width, height: view.frame.size.height - view.safeAreaInsets.top)
@@ -75,13 +75,13 @@ class MapPageViewController: UIViewController,MKMapViewDelegate, CLLocationManag
         cell.detailTextLabel?.text = searchResult.subtitle
         return cell
     }
-
-     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
-         searchResults = completer.results
-         searchResultsTable.reloadData()
-         
-     }
-
+    
+    func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
+        searchResults = completer.results
+        searchResultsTable.reloadData()
+        
+    }
+    
     
     @objc func addButtonClicked() {
         
@@ -114,7 +114,7 @@ class MapPageViewController: UIViewController,MKMapViewDelegate, CLLocationManag
 
 
 extension MapPageViewController {
-  
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchResultsTable.reloadData()
         searchBar.searchTextField.text = ""
@@ -130,54 +130,54 @@ extension MapPageViewController {
             searchResultsTable.isHidden = true
         }
     }
-
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-      
+        
         
         let searchRequest = MKLocalSearch.Request()
         searchRequest.naturalLanguageQuery = searchBar.text
-
+        
         let activeSearch = MKLocalSearch(request: searchRequest)
         
         activeSearch.start { (response,error) in
             let latitude = response?.boundingRegion.center.latitude
             let longitude = response?.boundingRegion.center.longitude
-
+            
             if response == nil {
                 print("Error")
                 
             }else {
-               
+                
                 let annotations = self.mapView.annotations
                 self.mapView.removeAnnotations(annotations)
-
+                
                 let annotation = MKPointAnnotation()
                 annotation.title = searchBar.text
                 annotation.coordinate = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
                 self.mapView.addAnnotation(annotation)
-
+                
                 let coordinate:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
                 let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
                 let region = MKCoordinateRegion(center: coordinate, span: span)
                 self.mapView.setRegion(region, animated: true)
-                   
+                
                 PlaceSingletonModel.sharedInstance.placeLatitude = String(latitude!)
                 PlaceSingletonModel.sharedInstance.placeLongitude = String(longitude!)
-
+                
                 self.searchResultsTable.isHidden = true
-               
+                
             }
             self.saveButtn()
-           
+            
         }
-       
-       
-     
+        
+        
+        
     }
     
     func saveButtn (){
-        navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(title: "Save", style: UIBarButtonItem.Style.done, target: self, action: #selector(addButtonClicked))
+        navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(title: "Kaydet", style: UIBarButtonItem.Style.done, target: self, action: #selector(addButtonClicked))
         self.navigationController!.navigationBar.tintColor = UIColor.brownCoffee
     }
 }

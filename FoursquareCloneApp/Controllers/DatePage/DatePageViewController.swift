@@ -10,7 +10,7 @@ import Lottie
 
 
 class DatePageViewController: UIViewController {
-
+    
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var datePageLabel: UILabel!
     private var LottieAnimationView : AnimationView?
@@ -27,13 +27,15 @@ class DatePageViewController: UIViewController {
         view.addSubview(LottieAnimationView!)
         LottieAnimationView!.play()
         
+        
+        
         let dateLabel = UserDefaults.standard.object(forKey: "date")
         
         if let newDate = dateLabel as? String {
             datePageLabel.text = newDate
         }
         
-
+        
         
     }
     
@@ -47,7 +49,7 @@ class DatePageViewController: UIViewController {
     @IBAction func saveAndForwardBtn(_ sender: Any) {
         let placeModel = PlaceSingletonModel.sharedInstance
         placeModel.placeDate = datePageLabel.text!
-       
+        
         UserDefaults.standard.set(datePageLabel.text!, forKey: "date")
         performSegue(withIdentifier: "goToMapPage", sender: nil)
         

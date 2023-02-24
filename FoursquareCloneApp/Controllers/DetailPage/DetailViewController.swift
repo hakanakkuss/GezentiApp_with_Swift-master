@@ -12,8 +12,8 @@ import Parse
 
 
 class DetailViewController: UIViewController, MKMapViewDelegate {
-  
-
+    
+    
     @IBOutlet weak var placeNameLabel: UILabel!
     @IBOutlet weak var placeTypeLabel: UILabel!
     @IBOutlet weak var placeDescriptionLabel: UILabel!
@@ -25,14 +25,14 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
     var choosenPlaceId = ""
     var choosenPlaceLatitude = Double()
     var choosenPlaceLongitude = Double()
-
-   
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         getDataFromParse()
         mapView.delegate = self
-
+        
         
         imageView.layer.cornerRadius = 19
     }
@@ -87,7 +87,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
                 let region = MKCoordinateRegion(center: location
                                                 , span: span)
                 self.mapView.setRegion(region, animated: true)
-
+                
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = location
                 annotation.title = self.placeNameLabel.text
@@ -97,29 +97,29 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
             }
         }
     }
-
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         ///Burda annotation'a tıklanıldığında info tuşu çıkacak ve tıklanıldığında haritalara götürecek
         if annotation is MKUserLocation {
             return nil
         }
         let reuseId = "pin"
-
+        
         var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
-
+        
         if pinView == nil {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pinView?.canShowCallout = true //Pin'e tıklanıldığında sağ üst köşesinde balon çıkacak.
             let button = UIButton(type: .detailDisclosure)
             pinView?.rightCalloutAccessoryView = button
-
+            
         }else {
             pinView?.annotation = annotation
-
+            
         }
         return pinView
     }
-
+    
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         ///Burası da baloncukta çıkan butona tıklanıldığında ne olacağına karar verdiğimiz kısım.
         if self.choosenPlaceLatitude != 0.0 && self.choosenPlaceLongitude != 0.0 {
@@ -130,16 +130,16 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
                         let myPlaceMark = MKPlacemark(placemark: placemark[0])
                         let mapItem = MKMapItem(placemark: myPlaceMark)
                         mapItem.name = self.placeNameLabel.text
-
+                        
                         let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
                         mapItem.openInMaps(launchOptions: launchOptions)
-
-
+                        
+                        
                     }
                 }
             }
         }
     }
-
+    
     
 }

@@ -8,14 +8,14 @@
 import UIKit
 
 class SettingsPageViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     var settingsArray = [String]()
     
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -30,7 +30,7 @@ class SettingsPageViewController: UIViewController {
         settingsArray.append("Help and Support")
         settingsArray.append("About")
     }
-
+    
 }
 
 extension SettingsPageViewController: UITableViewDelegate, UITableViewDataSource {

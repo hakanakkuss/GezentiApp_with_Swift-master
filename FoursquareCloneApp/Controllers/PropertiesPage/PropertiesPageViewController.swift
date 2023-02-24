@@ -10,7 +10,7 @@ import PhotosUI
 import Lottie
 
 class PropertiesPageViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate,PHPickerViewControllerDelegate {
-
+    
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var placeNameTF: UITextField!
     @IBOutlet weak var placeTypeTF: UITextField!
@@ -37,9 +37,13 @@ class PropertiesPageViewController: UIViewController, UIImagePickerControllerDel
         LottieAnimationView!.play()
         nextButton.titleLabel?.textColor = UIColor.brownCoffee
         choosePhotos.tintColor = UIColor.almond
-  
-      
-
+    
+        let backButton = UIBarButtonItem()
+        backButton.title = "Geri"
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        
+        
+        
     }
     
     func chooseImageMethod(){
@@ -48,55 +52,55 @@ class PropertiesPageViewController: UIViewController, UIImagePickerControllerDel
         imageView.addGestureRecognizer(gestureRecognizer)
     }
     @objc func chooseImage() {
-            
-            let picker = UIImagePickerController()
-            picker.delegate = self
-            picker.sourceType = .photoLibrary
-            self.present(picker, animated: true, completion: nil)
-            
-        }
-   
-   
-
+        
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .photoLibrary
+        self.present(picker, animated: true, completion: nil)
+        
+    }
+    
+    
+    
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         ///Boş bir dizi tuttuk ve içine seçilen görselleri append yöntemi ile gönderdik.
         var dizi:[UIImage]=[]
         picker.dismiss(animated: true, completion: nil)
-            for result in results {
-                result.itemProvider.loadObject(ofClass: UIImage.self, completionHandler: { (object, error) in
-                    if let image = object as? UIImage {
-                        dizi.append(image)
-                        DispatchQueue.main.async {
-                            self.imageView.image = dizi.first
-                            self.imageView.layer.cornerRadius = 20
-                            self.view.setNeedsLayout()
-                        }
+        for result in results {
+            result.itemProvider.loadObject(ofClass: UIImage.self, completionHandler: { (object, error) in
+                if let image = object as? UIImage {
+                    dizi.append(image)
+                    DispatchQueue.main.async {
+                        self.imageView.image = dizi.first
+                        self.imageView.layer.cornerRadius = 20
+                        self.view.setNeedsLayout()
                     }
-                })
-            }
+                }
+            })
+        }
     }
-   
+    
     
     @objc func pickPhoto(){
         
         ///Kullanıcıya galeriden fotoğraf seçtirmek için bu fonksiyon kullanıldı.
-            var config = PHPickerConfiguration()
-            config.selectionLimit = 1
-            config.filter = PHPickerFilter.images
-            
-            let pickerViewController = PHPickerViewController(configuration: config)
-            pickerViewController.delegate = self
-            self.present(pickerViewController, animated: true, completion: nil)
-        }
+        var config = PHPickerConfiguration()
+        config.selectionLimit = 1
+        config.filter = PHPickerFilter.images
+        
+        let pickerViewController = PHPickerViewController(configuration: config)
+        pickerViewController.delegate = self
+        self.present(pickerViewController, animated: true, completion: nil)
+    }
     
     @IBAction func choosePhotosButton(_ sender: Any) {
         pickPhoto()
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            imageView.image = info[.originalImage] as? UIImage
-            self.dismiss(animated: true, completion: nil)
-        }
+        imageView.image = info[.originalImage] as? UIImage
+        self.dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func nextButton(_ sender: Any) {
         let placeModel = PlaceSingletonModel.sharedInstance
@@ -106,13 +110,13 @@ class PropertiesPageViewController: UIViewController, UIImagePickerControllerDel
         if placeNameTF.text != "" && placeTypeTF.text != "" && placeDescriptionTF.text != "" {
             if let chosenImage = imageView.image  {
                 
-                    placeModel.placeName = placeNameTF.text!
-                    placeModel.placeType = placeTypeTF.text!
-                    placeModel.placeDescription = placeDescriptionTF.text!
-                    placeModel.placeImage = chosenImage
+                placeModel.placeName = placeNameTF.text!
+                placeModel.placeType = placeTypeTF.text!
+                placeModel.placeDescription = placeDescriptionTF.text!
+                placeModel.placeImage = chosenImage
             }
         }else {
-           makeAlert(titleInput: "Uyarı!", messageInput: "Tüm alanları doldurduğunuzdan emin olun.")
+            makeAlert(titleInput: "Uyarı!", messageInput: "Tüm alanları doldurduğunuzdan emin olun.")
         }
         performSegue(withIdentifier: "goToDatePage", sender: nil)
     }

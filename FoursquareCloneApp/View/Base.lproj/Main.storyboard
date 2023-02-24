@@ -34,7 +34,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2CO-cO-vFN">
-                                <rect key="frame" x="0.0" y="149" width="425.5" height="316"/>
+                                <rect key="frame" x="0.0" y="149" width="417.5" height="316"/>
                                 <color key="backgroundColor" red="0.91764705879999997" green="0.86666666670000003" blue="0.80392156859999997" alpha="0.91996330609999999" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="316" id="Wme-KY-rCS"/>
@@ -47,7 +47,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionCell" id="mBi-OX-nsX" customClass="OnboardingCollectionViewCell" customModule="FoursquareCloneApp" customModuleProvider="target">
-                                        <rect key="frame" x="42" y="0.0" width="342" height="308"/>
+                                        <rect key="frame" x="38" y="0.0" width="342" height="308"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="DUk-yn-q1C">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="308"/>
@@ -148,16 +148,16 @@
             </objects>
             <point key="canvasLocation" x="-168.11594202898553" y="31.473214285714285"/>
         </scene>
-        <!--View Controller-->
+        <!--Register Page View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="Main" id="BYZ-38-t0r" customClass="ViewController" customModule="FoursquareCloneApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Main" id="BYZ-38-t0r" customClass="RegisterPageViewController" customModule="FoursquareCloneApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gezenti" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EzN-eO-tIO">
-                                <rect key="frame" x="60" y="146.5" width="294" height="49.5"/>
+                                <rect key="frame" x="60" y="146.5" width="260" height="49.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="36"/>
                                 <color key="textColor" systemColor="systemGray3Color"/>
                                 <nil key="highlightedColor"/>
@@ -182,10 +182,10 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="fEO-sc-Xhy">
-                                <rect key="frame" x="70" y="350" width="274" height="39"/>
+                                <rect key="frame" x="70" y="350" width="240" height="39"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QKZ-RW-p2s">
-                                        <rect key="frame" x="0.0" y="0.0" width="134" height="39"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="39"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="7vd-F0-p3J"/>
                                             <constraint firstAttribute="height" constant="39" id="Ct6-bL-G0j"/>
@@ -213,7 +213,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M54-Ib-jNL">
-                                        <rect key="frame" x="184" y="0.0" width="90" height="39"/>
+                                        <rect key="frame" x="150" y="0.0" width="90" height="39"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="39" id="GF3-Ts-aFE"/>
                                             <constraint firstAttribute="width" constant="90" id="zVf-Zs-dR1"/>
@@ -454,7 +454,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="apw-i7-B0k"/>
-                    <navigationItem key="navigationItem" id="8bA-HG-Bhb"/>
+                    <navigationItem key="navigationItem" id="8bA-HG-Bhb">
+                        <barButtonItem key="backBarButtonItem" title="Geri" id="aum-If-6IH"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="choosePhotos" destination="zqw-86-RQz" id="GjP-wI-wNT"/>
                         <outlet property="imageView" destination="CJw-k1-M3w" id="2b4-K5-W21"/>
@@ -623,7 +625,7 @@
             </objects>
             <point key="canvasLocation" x="2642.0289855072465" y="781.47321428571422"/>
         </scene>
-        <!--Favorites Page View Controller-->
+        <!--Item-->
         <scene sceneID="vtB-Gi-GZC">
             <objects>
                 <viewController storyboardIdentifier="Favorites" id="UNC-A0-CiG" customClass="FavoritesPageViewController" customModule="FoursquareCloneApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -655,6 +657,7 @@
                             <constraint firstItem="ha5-WK-WDc" firstAttribute="top" secondItem="yRR-nc-92n" secondAttribute="top" id="xvv-iG-Kt0"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="lXC-y5-tdJ"/>
                     <navigationItem key="navigationItem" id="AHX-09-jQS"/>
                     <connections>
                         <outlet property="favoritesTableView" destination="ha5-WK-WDc" id="Ovh-CC-upJ"/>
@@ -662,7 +665,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2JW-ws-tFL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1779.7101449275365" y="798.88392857142856"/>
+            <point key="canvasLocation" x="1780" y="781"/>
         </scene>
         <!--Map Page View Controller-->
         <scene sceneID="rx5-56-Req">
@@ -779,7 +782,7 @@
             <objects>
                 <navigationController storyboardIdentifier="navigationController" automaticallyAdjustsScrollViewInsets="NO" id="7Xu-C5-KyE" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="RPW-xz-Q5o">
+                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="RPW-xz-Q5o">
                         <barButtonItem key="backBarButtonItem" title="Geri" id="aJU-oo-FGQ"/>
                     </navigationItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Mxh-ZE-6dn">
@@ -875,7 +878,9 @@
                             <constraint firstItem="Fll-Hf-a1W" firstAttribute="bottom" secondItem="jDw-3z-Lbw" secondAttribute="bottom" id="wPc-Eh-3RV"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="NUm-NL-6bZ"/>
+                    <navigationItem key="navigationItem" id="NUm-NL-6bZ">
+                        <barButtonItem key="backBarButtonItem" title="GERİ" id="W4K-NI-yVS"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="datePageLabel" destination="wcH-lZ-9bf" id="FEA-oZ-Dwc"/>
                         <outlet property="datePicker" destination="Fll-Hf-a1W" id="QfF-fv-0qo"/>
@@ -891,7 +896,9 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8l8-b4-fWS" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="c8N-Eo-PZa"/>
+                    <navigationItem key="navigationItem" id="c8N-Eo-PZa">
+                        <barButtonItem key="backBarButtonItem" title="Geri" id="iEr-rL-Lsb"/>
+                    </navigationItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3cY-aD-r6f">
                         <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -907,7 +914,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gev-5H-jkb"/>
+        <segue reference="Hqu-CF-bcC"/>
         <segue reference="GUg-DS-Qfd"/>
     </inferredMetricsTieBreakers>
     <resources>

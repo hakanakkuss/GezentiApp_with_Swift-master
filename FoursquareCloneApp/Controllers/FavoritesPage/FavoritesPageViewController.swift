@@ -19,77 +19,35 @@ class FavoritesPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         favoritesTableView.delegate = self
         favoritesTableView.dataSource = self
-
+        
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        fetchItems()
-//    }
-
-    // MARK: -FETCH DATAS FROM COREDATA
-//    func fetchItems(){
-//        self.favoritesArray.removeAll()
-//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-//            return
-//        }
-//
-//        let managedContext = appDelegate.persistentContainer.viewContext
-//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Places")
-//
-//        do{
-//            let fetchResult = try managedContext.fetch(fetchRequest)
-//
-//            for item in fetchResult as! [NSManagedObject]{
-//                self.favoritesArray.append(item.value(forKey: "item") as! String)
-//            }
-//            print(self.favoritesArray)
-//        }catch {
-//            print(error.localizedDescription)
-//        }
-//    }
-//    // MARK: -DELETE DATA FROM COREDATA
-//    func deleteItems(word: String){
-//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//        let managedContext = appDelegate.persistentContainer.viewContext
-//
-//        // Silmek istediğiniz verilerin bulunduğu sorguyu hazırlayın
-//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Places")
-//        fetchRequest.predicate = NSPredicate(format: "item = %@", word)
-//
-//        do {
-//            let result = try managedContext.fetch(fetchRequest)
-//            for data in result as! [NSManagedObject] {
-//                managedContext.delete(data)
-//            }
-//
-//            // Değişiklikleri kaydedin
-//            try managedContext.save()
-//
-//        } catch let error as NSError {
-//            print("Core Data'dan veri silme hatası: \(error), \(error.userInfo)")
-//        }
-//    }
-    
-    
 }
 
 
 // MARK: -TABLEVIEW OPERATIONS
 extension FavoritesPageViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return favoritesArray.count
+        if favoritesArray.isEmpty {
+            
+            // BURAYA ANİMASYON GELECEK
+            
+            return 0
+        } else {
+            return favoritesArray.count
+        }
+        
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = favoritesTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = favoritesArray[indexPath.row]
         return cell
-
+        
     }
-
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100.0
