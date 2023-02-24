@@ -164,10 +164,11 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource {
         item.setValue(word, forKey: "item") //Veritabanına veri kaydetme.
         if !placesArray.contains(word){
             placesArray.append(word)
+            
+        }else {
+            deleteItems(word: word)
         }
         
-        
-
         do{
             try managedContext.save() //Veritabanına veri kaydetme.
 
@@ -176,58 +177,57 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-     // MARK: -FETCH DATAS FROM COREDATA
-//    func fetchItems(){
-//        self.placesArray.removeAll() //Varolan array'in içini silip core dataya ulaşıcaz.
-//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-//            return
-//        }
-//
-//        let managedContext = appDelegate.persistentContainer.viewContext
-//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Places") //Veritabanına istek attık.
-//
-//        do{
-//            let fetchResult = try managedContext.fetch(fetchRequest)
-//
-//            for item in fetchResult as! [NSManagedObject]{
-//                if !placesArray.contains("MyHome"){
-//                    self.placesArray.append(item.value(forKey: "item") as! String)
-//                    print("----------\(placesArray)")
-//                }
-//                else {
-//                    self.placesArray.append(item.value(forKey: "item") as! String)
-//                }
-//            }
-//
-//        }catch {
-//            print(error.localizedDescription)
-//        }
-//    }
+//      MARK: -FETCH DATAS FROM COREDATA
+    func fetchItems(){
+        self.placesArray.removeAll() //Varolan array'in içini silip core dataya ulaşıcaz.
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Places") //Veritabanına istek attık.
+
+        do{
+            let fetchResult = try managedContext.fetch(fetchRequest)
+
+            for item in fetchResult as! [NSManagedObject]{
+                if !placesArray.contains("MyHome"){
+                    self.placesArray.append(item.value(forKey: "item") as! String)
+                }
+                else {
+                    self.placesArray.append(item.value(forKey: "item") as! String)
+                }
+            }
+
+        }catch {
+            print(error.localizedDescription)
+        }
+    }
     
     
 //    // MARK: -DELETE DATA FROM COREDATA
-//    func deleteItems(word: String){
-//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//        let managedContext = appDelegate.persistentContainer.viewContext
-//
-//        // Silmek istediğiniz verilerin bulunduğu sorguyu hazırlayın
-//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Places")
-//        fetchRequest.predicate = NSPredicate(format: "item = %@", word)
-//
-//        do {
-//            let result = try managedContext.fetch(fetchRequest)
-//            for data in result as! [NSManagedObject] {
-//                managedContext.delete(data)
-//            }
-//
-//            // Değişiklikleri kaydedin
-//            try managedContext.save()
-//
-//        } catch let error as NSError {
-//            print("Core Data'dan veri silme hatası: \(error), \(error.userInfo)")
-//        }
-//    }
-//
+    func deleteItems(word: String){
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.persistentContainer.viewContext
+
+        // Silmek istediğiniz verilerin bulunduğu sorguyu hazırlayın
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Places")
+        fetchRequest.predicate = NSPredicate(format: "item = %@", word)
+
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            for data in result as! [NSManagedObject] {
+                managedContext.delete(data)
+            }
+
+            // Değişiklikleri kaydedin
+            try managedContext.save()
+
+        } catch let error as NSError {
+            print("Core Data'dan veri silme hatası: \(error), \(error.userInfo)")
+        }
+    }
+
 }
 
 
@@ -235,11 +235,7 @@ extension PlacesViewController: PlacesTableViewCellProtocol {
 
     func didTapFavoriteButton(word: String) {
         createItemsCoreData(word: word)
-//        deleteItems(word: word)
-//        fetchItems()
-        print("BURASI PLACES \(placesArray)")
+        fetchItems()
     }
-    
-
 }
 
