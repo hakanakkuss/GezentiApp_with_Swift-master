@@ -24,7 +24,6 @@ class FavoritesPageViewController: UIViewController {
         favoritesTableView.dataSource = self
         view.addBackground(imageName: "background1")
         
-        
     }
 }
 

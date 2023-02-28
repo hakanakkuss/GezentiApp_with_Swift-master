@@ -18,7 +18,7 @@ class SettingsPageViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        view.addBackground(imageName: "background1")
+        
         getSettings()
         
     }

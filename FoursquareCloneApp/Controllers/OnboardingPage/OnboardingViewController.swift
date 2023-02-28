@@ -31,14 +31,16 @@ class OnboardingViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        view.addBackground(imageName: "background1")
+       
         sliderArray = [
             OnboardingSlider(title: "Gezintiye Çık", description: "Gittiğin yerlerin adreslerini kolaylıkla kaydedebilirsin.", sliderImage: UIImage(named: "travel1")!),
-            OnboardingSlider(title: "Buluşma Ayarla", description: "Sevgilinle romantik bir akşam yemeği için gittiğin yerleri kontrol edebilirsin.", sliderImage: UIImage(named: "date")!),
-            OnboardingSlider(title: "Kafanı Dağıt", description: "Sebepsizce bazen kaçıp gitmeden önce ziyaret ettiğin yerlere göz atabilirsin.", sliderImage: UIImage(named: "bussiness")!)
+            OnboardingSlider(title: "Buluşma Ayarla", description: "Romantik bir akşam yemeği için gittiğin yerleri kaydedebilirsin.", sliderImage: UIImage(named: "date")!),
+            OnboardingSlider(title: "Kafanı Dağıt", description: "Doğal güzelliklerle süslenmiş bir çok yere göz atabilirsin.", sliderImage: UIImage(named: "bussiness")!)
         ]
         
         nextButton.isHidden = false
+        view.addBackground(imageName: "background1")
+        
         
     }
     
@@ -77,8 +79,5 @@ extension OnboardingViewController: UICollectionViewDelegate,UICollectionViewDat
         currentPage = Int(scrollView.contentOffset.x / width)
         
     }
-    
-    
-    
-    
+     
 }
