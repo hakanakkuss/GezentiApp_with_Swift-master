@@ -13,13 +13,14 @@
 		5201DBD8298EDC2500AA6376 /* DatePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5201DBD7298EDC2500AA6376 /* DatePageViewController.swift */; };
 		5201DBDC298FBEEE00AA6376 /* 66346-marking-a-calendar.json in Resources */ = {isa = PBXBuildFile; fileRef = 5201DBDB298FBEEE00AA6376 /* 66346-marking-a-calendar.json */; };
 		5201DBDF298FDE5F00AA6376 /* SettingsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5201DBDE298FDE5F00AA6376 /* SettingsPageViewController.swift */; };
+		5202C93F29AD5B8D00B3A66B /* FavoriteButtonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5202C93E29AD5B8D00B3A66B /* FavoriteButtonModel.swift */; };
+		5202C94429AE1E6E00B3A66B /* Places.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5202C94229AE1E6E00B3A66B /* Places.xcdatamodeld */; };
 		52154211298124890076CCDF /* UIViewController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52154210298124890076CCDF /* UIViewController+Helpers.swift */; };
 		52154213298128450076CCDF /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52154212298128450076CCDF /* UIColor+Ext.swift */; };
 		52154215298129290076CCDF /* UIFont+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52154214298129280076CCDF /* UIFont+Ext.swift */; };
 		524717FF297B2077003AD66D /* PlaceSingletonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524717FE297B2077003AD66D /* PlaceSingletonModel.swift */; };
 		5275A85429A62AAB0082EEA1 /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5275A85329A62AAB0082EEA1 /* FavoritesTableViewCell.swift */; };
 		5277A635298316C00077C591 /* 5559-travel-app-onboarding-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 5277A634298316C00077C591 /* 5559-travel-app-onboarding-animation.json */; };
-		5281392C29A3B2B9005954FE /* PlacesModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5281392A29A3B2B9005954FE /* PlacesModel.xcdatamodeld */; };
 		5287EBAC2970208D00A83FF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5287EBAB2970208D00A83FF0 /* AppDelegate.swift */; };
 		5287EBAE2970208D00A83FF0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5287EBAD2970208D00A83FF0 /* SceneDelegate.swift */; };
 		5287EBB02970208D00A83FF0 /* RegisterPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5287EBAF2970208D00A83FF0 /* RegisterPageViewController.swift */; };
@@ -43,13 +44,14 @@
 		5201DBD7298EDC2500AA6376 /* DatePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePageViewController.swift; sourceTree = "<group>"; };
 		5201DBDB298FBEEE00AA6376 /* 66346-marking-a-calendar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "66346-marking-a-calendar.json"; sourceTree = "<group>"; };
 		5201DBDE298FDE5F00AA6376 /* SettingsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPageViewController.swift; sourceTree = "<group>"; };
+		5202C93E29AD5B8D00B3A66B /* FavoriteButtonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButtonModel.swift; sourceTree = "<group>"; };
+		5202C94329AE1E6E00B3A66B /* Places.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Places.xcdatamodel; sourceTree = "<group>"; };
 		52154210298124890076CCDF /* UIViewController+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helpers.swift"; sourceTree = "<group>"; };
 		52154212298128450076CCDF /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		52154214298129280076CCDF /* UIFont+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Ext.swift"; sourceTree = "<group>"; };
 		524717FE297B2077003AD66D /* PlaceSingletonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSingletonModel.swift; sourceTree = "<group>"; };
 		5275A85329A62AAB0082EEA1 /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
 		5277A634298316C00077C591 /* 5559-travel-app-onboarding-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "5559-travel-app-onboarding-animation.json"; sourceTree = "<group>"; };
-		5281392B29A3B2B9005954FE /* PlacesModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PlacesModel.xcdatamodel; sourceTree = "<group>"; };
 		5287EBA82970208D00A83FF0 /* FoursquareCloneApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoursquareCloneApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5287EBAB2970208D00A83FF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5287EBAD2970208D00A83FF0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				5287EBB42970209100A83FF0 /* Assets.xcassets */,
 				52154210298124890076CCDF /* UIViewController+Helpers.swift */,
 				52154214298129280076CCDF /* UIFont+Ext.swift */,
+				5202C93E29AD5B8D00B3A66B /* FavoriteButtonModel.swift */,
 				52154212298128450076CCDF /* UIColor+Ext.swift */,
 			);
 			path = Helpers;
@@ -172,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				5287EBAA2970208D00A83FF0 /* FoursquareCloneApp */,
+				5202C94229AE1E6E00B3A66B /* Places.xcdatamodeld */,
 				5287EBA92970208D00A83FF0 /* Products */,
 				EA176BFB57B334AE537F6294 /* Pods */,
 				ABB945FD9FE98CF6AD794D4D /* Frameworks */,
@@ -194,7 +198,6 @@
 				5282A6F629A2496B003E0E08 /* Controllers */,
 				5215420F2981246F0076CCDF /* Helpers */,
 				5287EBB92970209100A83FF0 /* Info.plist */,
-				5281392A29A3B2B9005954FE /* PlacesModel.xcdatamodeld */,
 			);
 			path = FoursquareCloneApp;
 			sourceTree = "<group>";
@@ -392,10 +395,11 @@
 				5287EBB02970208D00A83FF0 /* RegisterPageViewController.swift in Sources */,
 				5275A85429A62AAB0082EEA1 /* FavoritesTableViewCell.swift in Sources */,
 				52F04198297718A70026456E /* MapPageViewController.swift in Sources */,
+				5202C93F29AD5B8D00B3A66B /* FavoriteButtonModel.swift in Sources */,
+				5202C94429AE1E6E00B3A66B /* Places.xcdatamodeld in Sources */,
 				5201DBD2298E8B5F00AA6376 /* OnboardingSlider.swift in Sources */,
 				52154213298128450076CCDF /* UIColor+Ext.swift in Sources */,
 				5287EBAC2970208D00A83FF0 /* AppDelegate.swift in Sources */,
-				5281392C29A3B2B9005954FE /* PlacesModel.xcdatamodeld in Sources */,
 				52C245A829A2A68F006F15C5 /* FavoritesPageViewController.swift in Sources */,
 				5287EBAE2970208D00A83FF0 /* SceneDelegate.swift in Sources */,
 				52F04196297717100026456E /* PropertiesPageViewController.swift in Sources */,
@@ -624,13 +628,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		5281392A29A3B2B9005954FE /* PlacesModel.xcdatamodeld */ = {
+		5202C94229AE1E6E00B3A66B /* Places.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				5281392B29A3B2B9005954FE /* PlacesModel.xcdatamodel */,
+				5202C94329AE1E6E00B3A66B /* Places.xcdatamodel */,
 			);
-			currentVersion = 5281392B29A3B2B9005954FE /* PlacesModel.xcdatamodel */;
-			path = PlacesModel.xcdatamodeld;
+			currentVersion = 5202C94329AE1E6E00B3A66B /* Places.xcdatamodel */;
+			path = Places.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

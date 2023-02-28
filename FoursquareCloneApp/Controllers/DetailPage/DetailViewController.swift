@@ -35,6 +35,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
         
         
         imageView.layer.cornerRadius = 19
+        view.addBackground(imageName: "background1")
     }
     
     func getDataFromParse () {

@@ -19,33 +19,46 @@ class PropertiesPageViewController: UIViewController, UIImagePickerControllerDel
     @IBOutlet weak var imageView: UIImageView!
     
     let picker = UIImagePickerController()
-    private var LottieAnimationView : AnimationView?
+    let lottieAnimationView = AnimationView(name: "5559-travel-app-onboarding-animation")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         chooseImageMethod()
         
-        LottieAnimationView = .init(name: "5559-travel-app-onboarding-animation")
-        LottieAnimationView!.frame = view.bounds
-        LottieAnimationView!.contentMode = .scaleAspectFit
-        LottieAnimationView!.loopMode = .loop
-        LottieAnimationView!.animationSpeed = 0.5
-        LottieAnimationView!.frame = CGRect(x: 86, y: 80, width: 210, height: 210)
-        LottieAnimationView?.sizeToFit()
-        view.addSubview(LottieAnimationView!)
-        LottieAnimationView!.play()
-        nextButton.titleLabel?.textColor = UIColor.brownCoffee
-        choosePhotos.tintColor = UIColor.almond
+        lottieAnimationView.contentMode = .scaleAspectFit
+        lottieAnimationView.loopMode = .loop
+        lottieAnimationView.play()
+        
+        view.addBackground(imageName: "background1")
+        
+        nextButton.titleLabel?.text = "İlerle"
+        
+        // Add animation view and message label to the view controller's view
+        view.addSubview(lottieAnimationView)
+        
+                
+        // Layout animation view and message label
+        lottieAnimationView.translatesAutoresizingMaskIntoConstraints = false
+       
+        choosePhotos.tintColor = UIColor.softOrange
+        
     
         let backButton = UIBarButtonItem()
         backButton.title = "Geri"
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         
+        NSLayoutConstraint.activate([
+            lottieAnimationView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            lottieAnimationView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -300),
+            lottieAnimationView.widthAnchor.constraint(equalToConstant: 200),
+            lottieAnimationView.heightAnchor.constraint(equalToConstant: 200),
         
+        ])
         
     }
     
+
     func chooseImageMethod(){
         imageView.isUserInteractionEnabled = true
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(chooseImage))
@@ -95,6 +108,7 @@ class PropertiesPageViewController: UIViewController, UIImagePickerControllerDel
     
     @IBAction func choosePhotosButton(_ sender: Any) {
         pickPhoto()
+        
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -105,7 +119,7 @@ class PropertiesPageViewController: UIViewController, UIImagePickerControllerDel
     @IBAction func nextButton(_ sender: Any) {
         let placeModel = PlaceSingletonModel.sharedInstance
         nextButton.titleLabel?.font = UIFont.avenir(.Medium, size: 27)
-        nextButton.titleLabel?.textColor = UIColor.brownCoffee
+        nextButton.titleLabel?.textColor = UIColor.orange
         
         if placeNameTF.text != "" && placeTypeTF.text != "" && placeDescriptionTF.text != "" {
             if let chosenImage = imageView.image  {

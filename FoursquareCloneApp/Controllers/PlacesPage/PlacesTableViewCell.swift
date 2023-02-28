@@ -29,22 +29,27 @@ class PlacesTableViewCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
-    @IBAction func favoriteButtonClicked(_ sender: Any) {
-        
+    
+
+
+    @IBAction func favoriteButtonTapped(_ sender: Any) {
+        print("--------------")
         delegate?.didTapFavoriteButton(word: (self.textLabel?.text)!)
-        
-        
-        
-        if favoriteButton.tag == 0 {
-            favoriteButton.tintColor = UIColor.brownCoffee
-            favoriteButton.tag += 1
-            
-            
-        }else {
-            favoriteButton.tintColor = UIColor.almond
-            favoriteButton.tag -= 1
-        }
+         
+         
+         
+         if favoriteButton.tag == 0 {
+             favoriteButton.tintColor = UIColor.darkGreen
+             favoriteButton.tag += 1
+             
+             
+         }else {
+             favoriteButton.tintColor = .none
+             favoriteButton.tag -= 1
+         }
     }
+    
+    /*   */
     
     
     

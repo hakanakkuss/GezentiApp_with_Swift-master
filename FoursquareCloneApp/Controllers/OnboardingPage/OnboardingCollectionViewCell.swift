@@ -15,10 +15,10 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
     func setup(_ slide: OnboardingSlider) {
         sliderImageView.image = slide.sliderImage
         sliderLabel.text = slide.title
-        sliderLabel.textColor = .brownCoffee
+        sliderLabel.textColor = .orange
         sliderLabel.font = UIFont.avenir(.Medium, size: 22)
         sliderDescriptionLabel.text = slide.description
-        sliderDescriptionLabel.textColor = .cinereous
+        sliderDescriptionLabel.textColor = .softYellow
         sliderDescriptionLabel.font = UIFont.avenir(.Heavy, size: 18)
         
     }

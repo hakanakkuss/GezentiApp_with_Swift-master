@@ -31,7 +31,7 @@ class OnboardingViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        
+        view.addBackground(imageName: "background1")
         sliderArray = [
             OnboardingSlider(title: "Gezintiye Çık", description: "Gittiğin yerlerin adreslerini kolaylıkla kaydedebilirsin.", sliderImage: UIImage(named: "travel1")!),
             OnboardingSlider(title: "Buluşma Ayarla", description: "Sevgilinle romantik bir akşam yemeği için gittiğin yerleri kontrol edebilirsin.", sliderImage: UIImage(named: "date")!),

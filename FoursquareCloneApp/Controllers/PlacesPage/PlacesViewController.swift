@@ -11,17 +11,17 @@ import CoreData
 import Lottie
 
 class PlacesViewController: UIViewController {
-    
-    let animationView = AnimationView(name: "5559-travel-app-onboarding-animation")
-    let messageLabel = UILabel()
+
     
     @IBOutlet weak var tableView: UITableView!
-    
     
     var placesArray = [String]()
     var placeNameArray = [String]()
     var placeIdArray = [String]()
     var selectedPlaceId = ""
+    
+    let animationView = AnimationView(name: "5559-travel-app-onboarding-animation")
+    let messageLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,20 +32,24 @@ class PlacesViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        view.addBackground(imageName: "background1")
+        
+        
         // Configure animation view
         animationView.contentMode = .scaleAspectFit
         animationView.loopMode = .loop
         animationView.play()
-        
-        // Configure message label
-        messageLabel.text = "Henüz ziyaret edilen yer bilgisi mevcut değil."
-        messageLabel.textAlignment = .center
-        messageLabel.textColor = .darkGray
-        messageLabel.font = UIFont.systemFont(ofSize: 19)
+
         
         // Add animation view and message label to the view controller's view
         view.addSubview(animationView)
         view.addSubview(messageLabel)
+        
+        // Configure message label
+        messageLabel.text = "Henüz ziyaret edilen yer bilgisi mevcut değil."
+        messageLabel.textAlignment = .center
+        messageLabel.textColor = .white
+        messageLabel.font = UIFont.systemFont(ofSize: 19)
         
         // Layout animation view and message label
         animationView.translatesAutoresizingMaskIntoConstraints = false
@@ -63,7 +67,9 @@ class PlacesViewController: UIViewController {
             messageLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
         
+        
     }
+    
     
     // MARK: -NAVIGATION CONTROLLER
     func navigationControl(){
@@ -71,7 +77,7 @@ class PlacesViewController: UIViewController {
         
         
         navigationController?.navigationBar.topItem?.leftBarButtonItem = UIBarButtonItem(title: "Çıkış Yap", style: UIBarButtonItem.Style.plain, target: self, action: #selector(logOutButtonClicked))
-        self.navigationController!.navigationBar.tintColor = UIColor.almond
+        self.navigationController!.navigationBar.tintColor = UIColor.softOrange
     }
     
     // MARK: -PARSE OPERATIONS
@@ -140,6 +146,8 @@ class PlacesViewController: UIViewController {
 // MARK: -TABLE VİEW OPERATIONS
 
 extension PlacesViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if placeNameArray.count == 0 {
@@ -156,12 +164,17 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PlacesTableViewCell
         cell.textLabel?.text = placeNameArray[indexPath.row]
         cell.selectionStyle = .default
         cell.textLabel?.font = UIFont.avenir(.Heavy, size: 18)
-        cell.textLabel?.textColor = UIColor.brownCoffee
+        cell.textLabel?.textColor = UIColor.orange
         cell.delegate = self
+        
+        
+        
         
         return cell
     }
@@ -176,6 +189,7 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100.0
     }
+
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -213,7 +227,6 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource {
         item.setValue(word, forKey: "item") //Veritabanına veri kaydetme.
         if !placesArray.contains(word){
             placesArray.append(word)
-            
         }else {
             deleteItems(word: word)
         }
@@ -235,17 +248,13 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource {
         
         let managedContext = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Places") //Veritabanına istek attık.
+
         
         do{
             let fetchResult = try managedContext.fetch(fetchRequest)
             
             for item in fetchResult as! [NSManagedObject]{
-                if !placesArray.contains("MyHome"){
-                    self.placesArray.append(item.value(forKey: "item") as! String)
-                }
-                else {
-                    self.placesArray.append(item.value(forKey: "item") as! String)
-                }
+                self.placesArray.append(item.value(forKey: "item") as! String)
             }
             
         }catch {
@@ -254,24 +263,26 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     
-    //    // MARK: -DELETE DATA FROM COREDATA
+    // MARK: -DELETE DATA FROM COREDATA
     func deleteItems(word: String){
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.persistentContainer.viewContext
-        
+
         // Silmek istediğiniz verilerin bulunduğu sorguyu hazırlayın
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Places")
         fetchRequest.predicate = NSPredicate(format: "item = %@", word)
-        
+
         do {
             let result = try managedContext.fetch(fetchRequest)
             for data in result as! [NSManagedObject] {
                 managedContext.delete(data)
+
             }
-            
+
             // Değişiklikleri kaydedin
             try managedContext.save()
-            
+
+
         } catch let error as NSError {
             print("Core Data'dan veri silme hatası: \(error), \(error.userInfo)")
         }
@@ -284,8 +295,10 @@ extension PlacesViewController: PlacesTableViewCellProtocol {
     
     func didTapFavoriteButton(word: String) {
         createItemsCoreData(word: word)
-        //        deleteItems(word: word)
+        
+//                deleteItems(word: word)
         fetchItems()
+        
     }
 }
 

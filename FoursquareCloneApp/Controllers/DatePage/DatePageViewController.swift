@@ -26,8 +26,7 @@ class DatePageViewController: UIViewController {
         LottieAnimationView?.sizeToFit()
         view.addSubview(LottieAnimationView!)
         LottieAnimationView!.play()
-        
-        
+        view.addBackground(imageName: "background1")
         
         let dateLabel = UserDefaults.standard.object(forKey: "date")
         
@@ -38,6 +37,7 @@ class DatePageViewController: UIViewController {
         
         
     }
+    
     
     @IBAction func dateSelectedFromDatePicker(_ sender: Any) {
         

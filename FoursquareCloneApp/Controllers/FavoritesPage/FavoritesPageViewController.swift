@@ -22,6 +22,8 @@ class FavoritesPageViewController: UIViewController {
         
         favoritesTableView.delegate = self
         favoritesTableView.dataSource = self
+        view.addBackground(imageName: "background1")
+        
         
     }
 }

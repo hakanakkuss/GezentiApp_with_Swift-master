@@ -46,6 +46,8 @@ class MapPageViewController: UIViewController,MKMapViewDelegate, CLLocationManag
         searchResultsTable.layer.opacity = 0.7
         searchResultsTable.isHidden = true
         
+        view.addBackground(imageName: "background1")
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -178,7 +180,7 @@ extension MapPageViewController {
     
     func saveButtn (){
         navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(title: "Kaydet", style: UIBarButtonItem.Style.done, target: self, action: #selector(addButtonClicked))
-        self.navigationController!.navigationBar.tintColor = UIColor.brownCoffee
+        self.navigationController!.navigationBar.tintColor = UIColor.orange
     }
 }
 

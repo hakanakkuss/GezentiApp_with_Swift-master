@@ -17,8 +17,11 @@ class RegisterPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        view.addBackground(imageName: "background1")
+
+
     }
+    
     @IBAction func signInClicked(_ sender: Any) {
         
         if userNameTF.text != "" && passwordTF.text != "" {
