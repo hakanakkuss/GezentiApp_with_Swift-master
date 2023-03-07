@@ -21,6 +21,7 @@
 		524717FF297B2077003AD66D /* PlaceSingletonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524717FE297B2077003AD66D /* PlaceSingletonModel.swift */; };
 		5275A85429A62AAB0082EEA1 /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5275A85329A62AAB0082EEA1 /* FavoritesTableViewCell.swift */; };
 		5277A635298316C00077C591 /* 5559-travel-app-onboarding-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 5277A634298316C00077C591 /* 5559-travel-app-onboarding-animation.json */; };
+		527F59B029B65FB400AF20B7 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527F59AF29B65FB400AF20B7 /* PhotoCollectionViewCell.swift */; };
 		5287EBAC2970208D00A83FF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5287EBAB2970208D00A83FF0 /* AppDelegate.swift */; };
 		5287EBAE2970208D00A83FF0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5287EBAD2970208D00A83FF0 /* SceneDelegate.swift */; };
 		5287EBB02970208D00A83FF0 /* RegisterPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5287EBAF2970208D00A83FF0 /* RegisterPageViewController.swift */; };
@@ -52,6 +53,7 @@
 		524717FE297B2077003AD66D /* PlaceSingletonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSingletonModel.swift; sourceTree = "<group>"; };
 		5275A85329A62AAB0082EEA1 /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
 		5277A634298316C00077C591 /* 5559-travel-app-onboarding-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "5559-travel-app-onboarding-animation.json"; sourceTree = "<group>"; };
+		527F59AF29B65FB400AF20B7 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		5287EBA82970208D00A83FF0 /* FoursquareCloneApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoursquareCloneApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5287EBAB2970208D00A83FF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5287EBAD2970208D00A83FF0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				52F041952977170F0026456E /* PropertiesPageViewController.swift */,
+				527F59AF29B65FB400AF20B7 /* PhotoCollectionViewCell.swift */,
 			);
 			path = PropertiesPage;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				52F04198297718A70026456E /* MapPageViewController.swift in Sources */,
 				5202C93F29AD5B8D00B3A66B /* FavoriteButtonModel.swift in Sources */,
 				5202C94429AE1E6E00B3A66B /* Places.xcdatamodeld in Sources */,
+				527F59B029B65FB400AF20B7 /* PhotoCollectionViewCell.swift in Sources */,
 				5201DBD2298E8B5F00AA6376 /* OnboardingSlider.swift in Sources */,
 				52154213298128450076CCDF /* UIColor+Ext.swift in Sources */,
 				5287EBAC2970208D00A83FF0 /* AppDelegate.swift in Sources */,

@@ -23,7 +23,7 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
         sliderDescriptionLabel.textColor = .darkGreen
         sliderDescriptionLabel.lineBreakMode = .byWordWrapping
         
-        sliderDescriptionLabel.font = UIFont.avenir(.Medium, size: 10)
+        sliderDescriptionLabel.font = UIFont.avenir(.Medium, size: 13)
         
     
         
