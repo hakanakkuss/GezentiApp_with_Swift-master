@@ -10,9 +10,12 @@ import MapKit
 import Parse
 
 class MapPageViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate, MKLocalSearchCompleterDelegate, UITableViewDelegate, UITableViewDataSource {
+   
+    var fotografDizisi = [UIImage]()
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchResultsTable: UITableView!
+    
     var locationManager = CLLocationManager()
     var choosenPlaceLatitude = Double()
     var choosenPlaceLongitude = Double()
@@ -31,6 +34,7 @@ class MapPageViewController: UIViewController,MKMapViewDelegate, CLLocationManag
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         mapView.delegate = self
         locationManager.delegate = self
         
@@ -48,6 +52,7 @@ class MapPageViewController: UIViewController,MKMapViewDelegate, CLLocationManag
         
         view.addBackground(imageName: "background1")
         
+   
     }
     
     override func viewDidLayoutSubviews() {
@@ -75,6 +80,7 @@ class MapPageViewController: UIViewController,MKMapViewDelegate, CLLocationManag
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         cell.textLabel?.text = searchResult.title
         cell.detailTextLabel?.text = searchResult.subtitle
+        
         return cell
     }
     
@@ -87,18 +93,29 @@ class MapPageViewController: UIViewController,MKMapViewDelegate, CLLocationManag
     
     @objc func addButtonClicked() {
         
-        let placeObject = PlaceSingletonModel.sharedInstance
+        self.performSegue(withIdentifier: "goToPlacesViewController", sender: nil)
+        
         let object = PFObject(className: "Places")
+        let placeObject = PlaceSingletonModel.sharedInstance
+        print("-------------BURASI \(placeObject.placeImage)")
         object["PlaceName"] = placeObject.placeName
         object["PlaceType"] = placeObject.placeType
         object["PlaceDescription"] = placeObject.placeDescription
         object["PlaceLatitude"] = placeObject.placeLatitude
         object["PlaceLongitude"] = placeObject.placeLongitude
         object["PlaceDate"] = placeObject.placeDate
-        
-        if let imageData = placeObject.placeImage.jpegData(compressionQuality: 0.5) {
-            object["imageOne"] = PFFileObject(name: "image.jpeg", data: imageData)
+    
+        var fileArray = [PFFileObject]()
+        for image in placeObject.placeImage {
+            let imageData = image.jpegData(compressionQuality: 0.8)!
+            imageData.base64EncodedString(options: .lineLength64Characters)
+            let file = PFFileObject(data: imageData)
+            fileArray.append(file!)
         }
+       
+       let imageObject = PFObject(className: "Places")
+        object["imageFile"] = fileArray
+        
         
         object.saveInBackground { success, error in
             if error != nil {
@@ -106,8 +123,9 @@ class MapPageViewController: UIViewController,MKMapViewDelegate, CLLocationManag
                 let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alert.addAction(okButton)
                 self.present(alert, animated: true)
+                
             }else {
-                self.performSegue(withIdentifier: "goToPlacesViewController", sender: nil)
+                
             }
         }
     }
@@ -121,6 +139,7 @@ extension MapPageViewController {
         searchResultsTable.reloadData()
         searchBar.searchTextField.text = ""
         searchResultsTable.isHidden = true
+        
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -134,8 +153,6 @@ extension MapPageViewController {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
-        
         
         let searchRequest = MKLocalSearch.Request()
         searchRequest.naturalLanguageQuery = searchBar.text
@@ -181,6 +198,8 @@ extension MapPageViewController {
     func saveButtn (){
         navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(title: "Kaydet", style: UIBarButtonItem.Style.done, target: self, action: #selector(addButtonClicked))
         self.navigationController!.navigationBar.tintColor = UIColor.orange
+        
+        
     }
 }
 
@@ -190,5 +209,4 @@ extension MapPageViewController: UISearchControllerDelegate {
         return true
     }
 }
-
 

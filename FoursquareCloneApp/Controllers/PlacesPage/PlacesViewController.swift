@@ -279,9 +279,7 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource {
 
             }
 
-            // Değişiklikleri kaydedin
             try managedContext.save()
-
 
         } catch let error as NSError {
             print("Core Data'dan veri silme hatası: \(error), \(error.userInfo)")
@@ -295,7 +293,6 @@ extension PlacesViewController: PlacesTableViewCellProtocol {
     
     func didTapFavoriteButton(word: String) {
         createItemsCoreData(word: word)
-        
 //                deleteItems(word: word)
         fetchItems()
         

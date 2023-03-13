@@ -14,8 +14,10 @@ class DatePageViewController: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var datePageLabel: UILabel!
     private var LottieAnimationView : AnimationView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         LottieAnimationView = .init(name: "66346-marking-a-calendar")
         LottieAnimationView!.frame = view.bounds
@@ -35,8 +37,9 @@ class DatePageViewController: UIViewController {
         }
         
         
-        
     }
+    
+    
     
     
     @IBAction func dateSelectedFromDatePicker(_ sender: Any) {
@@ -53,6 +56,7 @@ class DatePageViewController: UIViewController {
         UserDefaults.standard.set(datePageLabel.text!, forKey: "date")
         performSegue(withIdentifier: "goToMapPage", sender: nil)
         
+        }
     }
-}
+
 

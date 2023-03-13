@@ -21,6 +21,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var placeDateLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imagesCollectionView: UICollectionView!
     
     var choosenPlaceId = ""
     var choosenPlaceLatitude = Double()
@@ -34,7 +35,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
         mapView.delegate = self
         
         
-        imageView.layer.cornerRadius = 19
+//        imageView.layer.cornerRadius = 19
         view.addBackground(imageName: "background1")
     }
     

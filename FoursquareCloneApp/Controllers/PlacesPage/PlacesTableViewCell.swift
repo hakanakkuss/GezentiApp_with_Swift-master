@@ -33,7 +33,6 @@ class PlacesTableViewCell: UITableViewCell {
 
 
     @IBAction func favoriteButtonTapped(_ sender: Any) {
-        print("--------------")
         delegate?.didTapFavoriteButton(word: (self.textLabel?.text)!)
          
          
@@ -49,7 +48,6 @@ class PlacesTableViewCell: UITableViewCell {
          }
     }
     
-    /*   */
     
     
     

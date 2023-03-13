@@ -8,8 +8,11 @@
 import UIKit
 import PhotosUI
 import Lottie
+import Parse
 
-class PropertiesPageViewController: UIViewController {
+class PropertiesPageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    
     
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var placeNameTF: UITextField!
@@ -20,10 +23,13 @@ class PropertiesPageViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var imageArray = [UIImage]()
+    let placeModel = PlaceSingletonModel.sharedInstance
+    
     let lottieAnimationView = AnimationView(name: "5559-travel-app-onboarding-animation")
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -41,12 +47,10 @@ class PropertiesPageViewController: UIViewController {
         // Add animation view and message label to the view controller's view
         view.addSubview(lottieAnimationView)
         
-        
         // Layout animation view and message label
         lottieAnimationView.translatesAutoresizingMaskIntoConstraints = false
         
         choosePhotos.tintColor = UIColor.softOrange
-        
         
         
         let backButton = UIBarButtonItem()
@@ -63,7 +67,26 @@ class PropertiesPageViewController: UIViewController {
         
     }
     
+    
+    @IBAction func nextButton(_ sender: Any) {
+        
+        nextButton.titleLabel?.font = UIFont.avenir(.Medium, size: 27)
+        nextButton.titleLabel?.textColor = UIColor.orange
+        
+        if placeNameTF.text != "" && placeTypeTF.text != "" && placeDescriptionTF.text != "" {
+            placeModel.placeName = placeNameTF.text!
+            placeModel.placeType = placeTypeTF.text!
+            placeModel.placeDescription = placeDescriptionTF.text!
+            
+        }else {
+            makeAlert(titleInput: "Uyarı!", messageInput: "Tüm alanları doldurduğunuzdan emin olun.")
+        }
+        performSegue(withIdentifier: "goToDatePage", sender: nil)
+        
+    }
+}
 
+extension PropertiesPageViewController: PHPickerViewControllerDelegate {
     
     @IBAction func choosePhotosButton(_ sender: Any) {
         var config = PHPickerConfiguration()
@@ -71,49 +94,31 @@ class PropertiesPageViewController: UIViewController {
         
         let phPicker = PHPickerViewController(configuration: config)
         phPicker.delegate = self
-        
         self.present(phPicker, animated: true)
     }
     
-    
-    
-    @IBAction func nextButton(_ sender: Any) {
-        let placeModel = PlaceSingletonModel.sharedInstance
-        nextButton.titleLabel?.font = UIFont.avenir(.Medium, size: 27)
-        nextButton.titleLabel?.textColor = UIColor.orange
-        
-        if placeNameTF.text != "" && placeTypeTF.text != "" && placeDescriptionTF.text != "" {
-            if let chosenImage = imageView.image  {
-                
-                placeModel.placeName = placeNameTF.text!
-                placeModel.placeType = placeTypeTF.text!
-                placeModel.placeDescription = placeDescriptionTF.text!
-                placeModel.placeImage = chosenImage
-            }
-        }else {
-            makeAlert(titleInput: "Uyarı!", messageInput: "Tüm alanları doldurduğunuzdan emin olun.")
-        }
-        performSegue(withIdentifier: "goToDatePage", sender: nil)
-    }
-}
-
-extension PropertiesPageViewController: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        
         dismiss(animated: true)
         for result in results {
-            result.itemProvider.loadObject(ofClass: UIImage.self) { object, error in
+            result.itemProvider.loadObject(ofClass: UIImage.self) { [self] object, error in
                 if let image = object as? UIImage {
                     self.imageArray.append(image)
+                    placeModel.placeImage = imageArray
+                    print("----------HERE\(placeModel.placeImage)")
                 }
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
-                
             }
+            
         }
     }
 }
 
+
+
+// MARK: -CollectionView Controller
 
 extension PropertiesPageViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -170,10 +175,10 @@ extension PropertiesPageViewController: UICollectionViewDelegate, UICollectionVi
     
     @objc func handleLongPressGesture(_ gestureRecognizer: UILongPressGestureRecognizer) {
         if gestureRecognizer.state == .began {
-            // Silmek istenen hücrenin indeksini alın
+            // Silmek istenen hücrenin indeksini alır
             let touchPoint = gestureRecognizer.location(in: collectionView)
             if let indexPath = collectionView.indexPathForItem(at: touchPoint) {
-                // Kullanıcı onayladığı zaman hücreyi silin
+                // Kullanıcı onayladığı zaman hücreyi siler
                 let alert = UIAlertController(title: "Silme İşlemi", message: "Bu fotoğrafı silmek istediğinize emin misiniz?", preferredStyle: .alert)
                 let yesAction = UIAlertAction(title: "Evet", style: .destructive, handler: { (action) in
                     self.imageArray.remove(at: indexPath.item)
@@ -186,7 +191,6 @@ extension PropertiesPageViewController: UICollectionViewDelegate, UICollectionVi
             }
         }
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
         let timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (timer) in
@@ -206,8 +210,8 @@ extension PropertiesPageViewController: UICollectionViewDelegate, UICollectionVi
     
 }
 
+
 extension PropertiesPageViewController: UICollectionViewDelegateFlowLayout {
-    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: collectionView.frame.size.width / 4 , height: collectionView.frame.size.height / 2 )
@@ -223,3 +227,4 @@ extension PropertiesPageViewController: UICollectionViewDelegateFlowLayout {
         return UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 0)
     }
 }
+

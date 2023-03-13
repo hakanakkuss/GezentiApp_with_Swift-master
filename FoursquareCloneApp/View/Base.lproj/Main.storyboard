@@ -360,7 +360,7 @@
                                             </attributedString>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="nextButton:" destination="OYl-vv-5PD" eventType="touchUpInside" id="S4O-7z-zGm"/>
+                                            <action selector="nextButton:" destination="OYl-vv-5PD" eventType="touchUpInside" id="LvS-yb-L1q"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -423,8 +423,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="169" height="144"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="7Gg-Xh-PUa">
-                                                    <rect key="frame" x="0.0" y="2" width="169" height="144"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Gg-Xh-PUa">
+                                                    <rect key="frame" x="0.0" y="0.0" width="169" height="148"/>
                                                     <color key="tintColor" red="1" green="0.4823529412" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </imageView>
                                             </subviews>
@@ -511,12 +511,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ua2-BC-4cK">
-                                <rect key="frame" x="0.0" y="88" width="414" height="200"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </imageView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="i67-zz-RvO">
                                 <rect key="frame" x="0.0" y="528.5" width="446" height="367.5"/>
                             </mapView>
@@ -561,7 +555,7 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="160" id="x8j-Er-gXj"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mekan Adı:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GKR-1y-rwJ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Mekan Adı:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GKR-1y-rwJ">
                                 <rect key="frame" x="20" y="329" width="94" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="mot-bK-xe7"/>
@@ -570,7 +564,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Mekan Tipi:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJ5-el-tG9">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Mekan Tipi:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJ5-el-tG9">
                                 <rect key="frame" x="20" y="380" width="94" height="25"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -591,20 +585,36 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RaF-tV-XSD">
+                                <rect key="frame" x="20" y="103" width="374" height="191"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zDr-AG-W7w">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImagesCell" id="iD2-Rq-ySy">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ds6-3E-vYR">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2rx-xF-9E5"/>
                         <color key="backgroundColor" red="0.62745098040000002" green="0.53725490200000003" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="i67-zz-RvO" firstAttribute="top" secondItem="4UR-0f-CcA" secondAttribute="bottom" constant="8.5" id="3mW-aI-4EN"/>
-                            <constraint firstItem="ua2-BC-4cK" firstAttribute="top" secondItem="VV3-tT-Z8V" secondAttribute="topMargin" constant="-4" id="6Ds-PZ-HDN"/>
                             <constraint firstItem="4UR-0f-CcA" firstAttribute="top" secondItem="R63-88-I4M" secondAttribute="bottom" constant="15" id="8HQ-Sn-q57"/>
-                            <constraint firstItem="ua2-BC-4cK" firstAttribute="leading" secondItem="2rx-xF-9E5" secondAttribute="leading" id="8NB-1P-t2k"/>
-                            <constraint firstItem="wjk-nB-mnS" firstAttribute="top" secondItem="ua2-BC-4cK" secondAttribute="bottom" constant="31" id="E6U-Jc-wup"/>
                             <constraint firstItem="GKR-1y-rwJ" firstAttribute="leading" secondItem="cJ5-el-tG9" secondAttribute="leading" id="Gan-Va-KI7"/>
                             <constraint firstItem="wjk-nB-mnS" firstAttribute="leading" secondItem="4UR-0f-CcA" secondAttribute="trailing" constant="31" id="JYQ-jo-KTu"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ua2-BC-4cK" secondAttribute="trailing" constant="-20" id="ORi-gf-zrI"/>
                             <constraint firstItem="GKR-1y-rwJ" firstAttribute="trailing" secondItem="cJ5-el-tG9" secondAttribute="trailing" id="UAj-nV-LSl"/>
-                            <constraint firstItem="ua2-BC-4cK" firstAttribute="centerX" secondItem="VV3-tT-Z8V" secondAttribute="centerX" id="WuQ-ev-cwU"/>
                             <constraint firstItem="wjk-nB-mnS" firstAttribute="leading" secondItem="GKR-1y-rwJ" secondAttribute="trailing" constant="77" id="XeT-ah-S7D"/>
                             <constraint firstItem="GKR-1y-rwJ" firstAttribute="leading" secondItem="R63-88-I4M" secondAttribute="leading" id="Y7c-qD-qCP"/>
                             <constraint firstItem="wjk-nB-mnS" firstAttribute="centerX" secondItem="VV3-tT-Z8V" secondAttribute="centerX" constant="69" id="ZPb-gQ-w8H"/>
@@ -612,21 +622,19 @@
                             <constraint firstItem="i67-zz-RvO" firstAttribute="top" secondItem="wjk-nB-mnS" secondAttribute="bottom" constant="9" id="eKN-xw-zD3"/>
                             <constraint firstItem="wjk-nB-mnS" firstAttribute="top" secondItem="VV3-tT-Z8V" secondAttribute="top" constant="319" id="ew1-bQ-RL2"/>
                             <constraint firstAttribute="bottom" secondItem="i67-zz-RvO" secondAttribute="bottom" id="glK-qi-aHb"/>
+                            <constraint firstItem="i67-zz-RvO" firstAttribute="leading" secondItem="2rx-xF-9E5" secondAttribute="leading" id="gqj-6P-rZs"/>
                             <constraint firstItem="GKR-1y-rwJ" firstAttribute="leading" secondItem="4UR-0f-CcA" secondAttribute="leading" id="hGg-Oa-2EB"/>
-                            <constraint firstItem="GKR-1y-rwJ" firstAttribute="top" secondItem="ua2-BC-4cK" secondAttribute="bottom" constant="41" id="hni-QX-Xj5"/>
-                            <constraint firstItem="ua2-BC-4cK" firstAttribute="leading" secondItem="i67-zz-RvO" secondAttribute="leading" id="mIr-hN-mW5"/>
-                            <constraint firstItem="ua2-BC-4cK" firstAttribute="trailing" secondItem="i67-zz-RvO" secondAttribute="trailing" constant="-32" id="pkf-tE-MwR"/>
                             <constraint firstItem="cJ5-el-tG9" firstAttribute="top" secondItem="GKR-1y-rwJ" secondAttribute="bottom" constant="26" id="r6V-dA-IvF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="i67-zz-RvO" secondAttribute="trailing" constant="-52" id="s0h-CP-08L"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="Zqw-Uk-ze3"/>
                     <navigationItem key="navigationItem" id="Cr4-By-NO3"/>
                     <connections>
-                        <outlet property="imageView" destination="ua2-BC-4cK" id="XMU-Ni-Kxc"/>
+                        <outlet property="imagesCollectionView" destination="RaF-tV-XSD" id="LF6-t6-fGG"/>
                         <outlet property="mapView" destination="i67-zz-RvO" id="FH3-8S-7nc"/>
                         <outlet property="placeDateLabel" destination="cF8-Q9-y8P" id="OY7-wq-xat"/>
                         <outlet property="placeDescriptionLabel" destination="InJ-Lc-y5b" id="lja-kF-4r7"/>
-                        <outlet property="placeImageView" destination="ua2-BC-4cK" id="qzf-o3-TuE"/>
                         <outlet property="placeNameLabel" destination="0aN-j7-8A4" id="bhb-gt-NZ8"/>
                         <outlet property="placeTypeLabel" destination="Sbp-2k-J89" id="gdc-4K-1nI"/>
                     </connections>
@@ -682,7 +690,7 @@
         <!--Map Page View Controller-->
         <scene sceneID="rx5-56-Req">
             <objects>
-                <viewController id="zjy-mX-KXW" customClass="MapPageViewController" customModule="FoursquareCloneApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapPageViewController" id="zjy-mX-KXW" customClass="MapPageViewController" customModule="FoursquareCloneApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="klA-kG-Gx5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -926,14 +934,13 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Hqu-CF-bcC"/>
-        <segue reference="r6Y-sr-E1I"/>
+        <segue reference="gev-5H-jkb"/>
+        <segue reference="GUg-DS-Qfd"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="icons8-gear-75" width="25" height="25"/>
         <image name="icons8-home-page-75" width="25" height="25"/>
         <image name="icons8-map-marker-75" width="25" height="25"/>
-        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
