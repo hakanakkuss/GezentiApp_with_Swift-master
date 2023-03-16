@@ -12,14 +12,11 @@ import Parse
 
 class PropertiesPageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    
-    
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var placeNameTF: UITextField!
     @IBOutlet weak var placeTypeTF: UITextField!
     @IBOutlet weak var placeDescriptionTF: UITextField!
     @IBOutlet weak var choosePhotos: UIButton!
-    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
     
     var imageArray = [UIImage]()
@@ -64,7 +61,6 @@ class PropertiesPageViewController: UIViewController, UIImagePickerControllerDel
             lottieAnimationView.heightAnchor.constraint(equalToConstant: 200),
             
         ])
-        
     }
     
     
@@ -82,7 +78,6 @@ class PropertiesPageViewController: UIViewController, UIImagePickerControllerDel
             makeAlert(titleInput: "Uyarı!", messageInput: "Tüm alanları doldurduğunuzdan emin olun.")
         }
         performSegue(withIdentifier: "goToDatePage", sender: nil)
-        
     }
 }
 
@@ -105,13 +100,11 @@ extension PropertiesPageViewController: PHPickerViewControllerDelegate {
                 if let image = object as? UIImage {
                     self.imageArray.append(image)
                     placeModel.placeImage = imageArray
-                    print("----------HERE\(placeModel.placeImage)")
                 }
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
             }
-            
         }
     }
 }
@@ -121,8 +114,6 @@ extension PropertiesPageViewController: PHPickerViewControllerDelegate {
 // MARK: -CollectionView Controller
 
 extension PropertiesPageViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imageArray.count
@@ -134,6 +125,7 @@ extension PropertiesPageViewController: UICollectionViewDelegate, UICollectionVi
         cell.imageView.image = imageArray[indexPath.row]
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressGesture))
         cell.addGestureRecognizer(longPressRecognizer)
+        cell.layer.cornerRadius = 15
         collectionView.backgroundColor = .none
         
         return cell
@@ -151,6 +143,8 @@ extension PropertiesPageViewController: UICollectionViewDelegate, UICollectionVi
         
         let imageView = UIImageView(image: image)
         imageView.frame = CGRect(x: 0, y: 0, width: scrollView.frame.width, height: scrollView.frame.height)
+        imageView.contentMode = .scaleAspectFit
+
         scrollView.addSubview(imageView)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
@@ -158,7 +152,6 @@ extension PropertiesPageViewController: UICollectionViewDelegate, UICollectionVi
         scrollView.isUserInteractionEnabled = true
         
         let fullscreenView = UIView(frame: UIScreen.main.bounds)
-        
         fullscreenView.alpha = 0.0
         detailVC.view.addSubview(fullscreenView)
         
@@ -214,14 +207,14 @@ extension PropertiesPageViewController: UICollectionViewDelegate, UICollectionVi
 extension PropertiesPageViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: collectionView.frame.size.width / 4 , height: collectionView.frame.size.height / 2 )
+        CGSize(width: collectionView.frame.width / 4 , height: collectionView.frame.height / 2 )
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        6
+        8
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        6
+        8
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 0)

@@ -10,8 +10,6 @@ import MapKit
 import Parse
 
 class MapPageViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate, MKLocalSearchCompleterDelegate, UITableViewDelegate, UITableViewDataSource {
-   
-    var fotografDizisi = [UIImage]()
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchResultsTable: UITableView!
@@ -92,12 +90,10 @@ class MapPageViewController: UIViewController,MKMapViewDelegate, CLLocationManag
     
     
     @objc func addButtonClicked() {
-        
-        self.performSegue(withIdentifier: "goToPlacesViewController", sender: nil)
-        
+                
         let object = PFObject(className: "Places")
         let placeObject = PlaceSingletonModel.sharedInstance
-        print("-------------BURASI \(placeObject.placeImage)")
+        
         object["PlaceName"] = placeObject.placeName
         object["PlaceType"] = placeObject.placeType
         object["PlaceDescription"] = placeObject.placeDescription
@@ -112,7 +108,7 @@ class MapPageViewController: UIViewController,MKMapViewDelegate, CLLocationManag
             let file = PFFileObject(data: imageData)
             fileArray.append(file!)
         }
-       
+
        let imageObject = PFObject(className: "Places")
         object["imageFile"] = fileArray
         
@@ -125,7 +121,7 @@ class MapPageViewController: UIViewController,MKMapViewDelegate, CLLocationManag
                 self.present(alert, animated: true)
                 
             }else {
-                
+                self.performSegue(withIdentifier: "goToPlacesViewController", sender: nil)
             }
         }
     }
